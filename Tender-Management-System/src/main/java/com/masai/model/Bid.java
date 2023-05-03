@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,11 +30,13 @@ public class Bid {
 	@JoinColumn(name = "vendorId")
 	private Vendor vendor;
 
+	@Positive(message = "Bid Amount price must be a positive number")
 	private Integer bidAmount;
 
+	@Positive(message = "Days must be a positive number")
 	private Integer durationInDays;
 
-	@Column(columnDefinition = "default 'PENDING'")
+	@Column(columnDefinition = "VARCHAR(10) DEFAULT 'PENDING'")
 	private String bidStatus;
 
 }

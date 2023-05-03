@@ -16,7 +16,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -35,14 +34,12 @@ public class Vendor {
 	@Size(min = 4, max = 20, message = "Size Should between 4-20 char")
 	@Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@#$%^&+=]).*$", message = "Password should contain at least 1 uppercase letter, 1 lowercase letter, 1 special character, and 1 digit")
 	private String password;
-	
+
 	@OneToMany
 	private List<Tender> tenderList = new ArrayList<>();
 
-	@Column(columnDefinition = "boolean default true")
-	private Boolean isActive;
+	private Boolean isActive = true;
 
-	@Column(columnDefinition = "boolean default true")
-	private Boolean isEligible;
+	private Boolean isEligible = true;
 
 }
