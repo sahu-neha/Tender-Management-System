@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,7 +27,8 @@ public class Dispute {
 	@OneToOne
 	@JoinColumn(name = "vendorId")
 	private Vendor vendor;
-
+	
+	@NotBlank(message = "Message is required")
 	private String message;
 
 	private boolean isResolved;
