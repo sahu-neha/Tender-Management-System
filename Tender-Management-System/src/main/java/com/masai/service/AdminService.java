@@ -17,13 +17,13 @@ public interface AdminService {
 
 	// ---------- U P D A T E - E X I S T I N G - T E N D E R ---------- //
 
-	public Tender updateTender(Tender tender) throws TenderException;
+	public Tender updateTender(Tender tender, Integer id) throws TenderException;
 
 	// ---------- G E T - A L L - T E N D E R S ---------- //
 
 	public List<Tender> viewAllTenders() throws TenderException;
 
-	// ---------- G E T - T E N D E R S - B Y - I D ---------- //
+	// ---------- G E T - T E N D E R - B Y - I D ---------- //
 
 	public Tender viewTendersById(Integer tenderId) throws TenderException;
 	

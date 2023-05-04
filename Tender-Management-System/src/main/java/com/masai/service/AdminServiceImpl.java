@@ -2,6 +2,7 @@ package com.masai.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,17 +53,16 @@ public class AdminServiceImpl implements AdminService {
 	// ---------- U P D A T E - E X I S T I N G - T E N D E R ---------- //
 
 	@Override
-	public Tender updateTender(Tender tender) throws TenderException {
+	public Tender updateTender(Tender tender, Integer id) throws TenderException {
+		Optional<Tender> t = tenderRepository.findById(id);
 
-		Optional<Tender> opt = tenderRepository.findById(tender.getTenderId());
+		Tender t1 = t.orElseThrow(() -> new TenderException("Not valid Id"));
+		t1.setTitle(tender.getTitle());
+		t1.setDescription(tender.getDescription());
+		t1.setTenderPrice(tender.getTenderPrice());
+		t1.setDurationInDays(tender.getDurationInDays());
 
-		if (!opt.isPresent())
-			throw new TenderException("Tender with this Tender ID doesn't exist");
-
-		Tender updatedTender = tenderRepository.save(tender);
-		if (updatedTender == null)
-			throw new TenderException("Tender updation failed");
-		return updatedTender;
+		return tenderRepository.save(t1);
 	}
 
 	// ---------- G E T - A L L - T E N D E R S ---------- //
@@ -77,7 +77,7 @@ public class AdminServiceImpl implements AdminService {
 		}
 	}
 
-	// ---------- G E T - T E N D E R S - B Y - I D ---------- //
+	// ---------- G E T - T E N D E R - B Y - I D ---------- //
 
 	@Override
 	public Tender viewTendersById(Integer tenderId) throws TenderException {
@@ -95,13 +95,14 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public List<Tender> viewTendersByStatus(String status) throws TenderException {
 		List<Tender> tenders = tenderRepository.findAll();
-		
-		tenders.forEach(null);
-		
-		if (tenders.size() == 0) {
-			throw new TenderException("No Tenders available");
+
+		List<Tender> tenderListByStatus = tenders.stream().filter(t -> t.getStatus().equals(status))
+				.collect(Collectors.toList());
+
+		if (tenderListByStatus.size() == 0) {
+			throw new TenderException("No Tenders available with the status " + status);
 		} else {
-			return tenders;
+			return tenderListByStatus;
 		}
 	}
 
