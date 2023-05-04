@@ -28,7 +28,7 @@ public class BidController {
 	
 	@GetMapping("Bids/{vendorId}")
 	public ResponseEntity<List<Bid>> fetchAllBidsByVendor(Integer vendorId) throws NotFoundException{
-		List<Bid> res = bService.getAllBidsOfVendor(vendorId);
+		List<Bid> res = bService.getAllBidsByVendor(vendorId);
 		return new ResponseEntity<List<Bid>>(res,HttpStatus.FOUND);
 	}
 }

@@ -44,7 +44,7 @@ public class Vendor {
 
 	private Boolean isEligible = true;
 	
-	@OneToOne(mappedBy = "vendor",cascade = CascadeType.ALL)
-	private Bid bid;
+	@OneToMany(mappedBy = "vendor",cascade = CascadeType.ALL)
+	private List<Bid> bidList  = new ArrayList<>();
 
 }

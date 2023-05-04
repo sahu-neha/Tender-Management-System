@@ -8,5 +8,5 @@ import com.masai.model.Bid;
 public interface BidService {
 	public Bid saveBidRecord(Bid bid)throws Exception;
 	
-	public List<Bid> getAllBidsOfVendor(Integer vendorId) throws NotFoundException;
+	public List<Bid> getAllBidsByVendor(Integer vendorId) throws NotFoundException;
 }

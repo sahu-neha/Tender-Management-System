@@ -28,7 +28,7 @@ public class Bid {
 	@JoinColumn(name = "tenderId")
 	private Tender tender;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "vendorId")
 	private Vendor vendor;
 
