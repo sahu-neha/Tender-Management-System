@@ -3,12 +3,14 @@ package com.masai.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -41,5 +43,8 @@ public class Vendor {
 	private Boolean isActive = true;
 
 	private Boolean isEligible = true;
+	
+	@OneToOne(mappedBy = "vendor",cascade = CascadeType.ALL)
+	private Bid bid;
 
 }
