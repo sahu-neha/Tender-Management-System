@@ -53,4 +53,7 @@ public class Tender {
 	@OneToMany
 	private List<Vendor> vendorList = new ArrayList<>();
 
+	@OneToMany(mappedBy = "tender")
+	private List<Bid> bidList = new ArrayList<>();
+
 }

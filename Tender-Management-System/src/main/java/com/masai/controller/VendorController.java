@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.exception.TenderException;
 import com.masai.exception.VendorException;
+import com.masai.model.Bid;
 import com.masai.model.Tender;
 import com.masai.model.Vendor;
 import com.masai.service.VendorService;
@@ -53,5 +54,16 @@ public class VendorController {
 			throw new TenderException("Tender is not Available");
 		return new ResponseEntity<>(tenders, HttpStatus.OK);
 	}
-
+   
+	// This Method for the Place a Bid against a Tender.
+	
+	@PostMapping("/tenders/{tenderId}/bids")
+	public ResponseEntity<String> placeBid(
+	        @PathVariable Integer tenderId,
+	        @RequestBody Bid bid) throws TenderException {
+	    vendorService.placeBid(tenderId, bid);
+	    return new ResponseEntity<>("Bid placed successfully", HttpStatus.CREATED);
+	}
+	
+	
 }

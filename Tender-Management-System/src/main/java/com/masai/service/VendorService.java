@@ -2,7 +2,9 @@ package com.masai.service;
 
 import java.util.List;
 
+import com.masai.exception.TenderException;
 import com.masai.exception.VendorException;
+import com.masai.model.Bid;
 import com.masai.model.Tender;
 import com.masai.model.Vendor;
 
@@ -16,5 +18,7 @@ public interface VendorService {
 
 	//This Method For Get The List Of All Tenders that are Available - @Author HoshiyarJyani
 	public List<Tender> getAllTenders();
+
+	public String placeBid(Integer tenderId, Bid bid) throws TenderException;
 	
 }
