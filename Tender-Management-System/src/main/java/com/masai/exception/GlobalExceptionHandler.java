@@ -37,7 +37,7 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<MyErrorDetails> exceptionHandler2(MethodArgumentNotValidException ce, WebRequest req) {
 		MyErrorDetails err = new MyErrorDetails();
 		err.setTimpstamp(LocalDateTime.now());
-		err.setMessage(ce.getMessage());
+		err.setMessage(ce.getBindingResult().getFieldError().getDefaultMessage());
 		err.setDetails(req.getDescription(false));
 
 		return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
