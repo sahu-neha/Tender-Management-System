@@ -1,12 +1,14 @@
 
 package com.masai.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.masai.exception.VendorException;
+import com.masai.model.Tender;
 import com.masai.model.Vendor;
 import com.masai.repository.VendorRepository;
 
@@ -37,5 +39,12 @@ public class VendorServiceImpl implements VendorService {
 			throw new VendorException("Vendor not found with username: " + username);
 		}
 	}
+	
+	// This Method for get the List of all available Tenders - @Author HoshiyarJyani
+	@Override
+	public List<Tender> getAllTenders() {
+	    return vendorRepository.findAllTenders();
+	}
+
 
 }
