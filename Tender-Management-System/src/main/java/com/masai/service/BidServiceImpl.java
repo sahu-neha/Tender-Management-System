@@ -24,13 +24,11 @@ public class BidServiceImpl implements BidService {
 	
 	
 	@Override
-	public List<Bid> getAllBidsOfVendor(Integer vendorId) throws NotFoundException {
+	public List<Bid> getAllBidsByVendor(Integer vendorId) throws NotFoundException {
 		Optional<Vendor> vendor = vRepo.findById(vendorId);
 		if(vendor.isPresent()) {
 			Vendor v = vendor.get();
-			List<Bid> bidList = new ArrayList<>();
-			bidList.add(v.getBid());
-			return bidList;
+			return v.getBidList();
 		}else {
 			throw new NotFoundException("Tender not found with id " + vendorId);
 		}
