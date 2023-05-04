@@ -12,6 +12,7 @@ import com.masai.exception.VendorException;
 import com.masai.model.Bid;
 import com.masai.model.Tender;
 import com.masai.model.Vendor;
+import com.masai.repository.TenderRepository;
 import com.masai.repository.VendorRepository;
 
 @Service
@@ -48,7 +49,8 @@ public class VendorServiceImpl implements VendorService {
 	// This Method for get the List of all available Tenders - @Author HoshiyarJyani
 	@Override
 	public List<Tender> getAllTenders() {
-		return vendorRepository.findAllTenders();
+//		return vendorRepository.findAllTenders();
+		return null;
 	}
 
 	// This Method for the Place a Bid against a Tender.
@@ -69,6 +71,7 @@ public class VendorServiceImpl implements VendorService {
 		} else {
 			throw new TenderException("Tender not found with ID: " + tenderId);
 		}
+		return null;
 	}
 
 }
