@@ -31,13 +31,13 @@ public class VendorController {
 
 	// This Method for the Update the Vendor Details
 
-	@PutMapping("/username/password/newPassword")
+	@PutMapping("/{username}/{password}/{newPassword}")
 	public ResponseEntity<String> updateVendorPassword(
-			@PathVariable String username,
-			@PathVariable String password,
-			@PathVariable String newPassword) throws VendorException {
-		vendorService.updateVendorPassword(username, password, newPassword);
-		return new ResponseEntity<>("Password updated successfully", HttpStatus.CREATED);
+	        @PathVariable("username") String username,
+	        @PathVariable("password") String password,
+	        @PathVariable("newPassword") String newPassword) throws VendorException {
+	    vendorService.updateVendorPassword(username, password, newPassword);
+	    return new ResponseEntity<>("Password updated successfully", HttpStatus.OK);
 	}
 
 }
