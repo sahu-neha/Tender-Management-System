@@ -17,8 +17,10 @@ public interface VendorService {
 	public void updateVendorPassword(String username,String password, String newPassword) throws VendorException;
 
 	//This Method For Get The List Of All Tenders that are Available - @Author HoshiyarJyani
-	public List<Tender> getAllTenders();
+	public List<Tender> viewAllTenders() throws TenderException;
 
 	public String placeBid(Integer tenderId, Bid bid) throws TenderException;
+
+	
 	
 }

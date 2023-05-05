@@ -1,8 +1,10 @@
 
 package com.masai.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,12 +48,24 @@ public class VendorServiceImpl implements VendorService {
 		}
 	}
 
-	// This Method for get the List of all available Tenders - @Author HoshiyarJyani
+	
+	// This Method for getting the List of all available Tenders - @Author HoshiyarJyani
 	@Override
-	public List<Tender> getAllTenders() {
-//		return vendorRepository.findAllTenders();
-		return null;
+	public List<Tender> viewAllTenders() throws TenderException {
+	    List<Tender> allTenders = tenderRepository.findAll();
+
+	    List<Tender> availableTenders = allTenders.stream()
+	            .filter(tender -> "Available".equals(tender.getStatus())) 
+	            .collect(Collectors.toList());
+
+	    if (availableTenders.isEmpty()) {
+	        throw new TenderException("No Tenders available");
+	    } else {
+	        return availableTenders;
+	    }
 	}
+
+
 
 	// This Method for the Place a Bid against a Tender.
 
