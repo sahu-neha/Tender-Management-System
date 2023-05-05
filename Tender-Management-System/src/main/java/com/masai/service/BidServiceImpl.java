@@ -28,7 +28,9 @@ public class BidServiceImpl implements BidService {
 
 	@Override
 	public List<Bid> getBidHistoryByVendorId(Integer vendorId) throws NotFoundException {
+
 		Optional<Vendor> vendor = vendorRepository.findById(vendorId);
+
 		if (vendor.isPresent()) {
 			Vendor v = vendor.get();
 			List<Bid> bidList = v.getBidList();
@@ -37,7 +39,6 @@ public class BidServiceImpl implements BidService {
 			} else {
 				return bidList;
 			}
-
 		} else {
 			throw new NotFoundException("Tender not found with id " + vendorId);
 		}
@@ -77,14 +78,17 @@ public class BidServiceImpl implements BidService {
 
 	@Override
 	public Bid updateBidStatus(Integer bidId, String bidStatus) throws Exception {
+
 		if (bidStatus == null || bidStatus.isEmpty()) {
 			throw new IllegalArgumentException("Bid Status must be provided");
 		}
+
 		Bid existingBid = bidRepository.findById(bidId).orElseThrow(() -> new Exception("Record Not Found By this Id"));
 
 		existingBid.setBidStatus(bidStatus.toLowerCase().equals("approved") ? BidStatus.APPROVED
 				: bidStatus.toLowerCase().equals("rejected") ? BidStatus.REJECTED : BidStatus.PENDING);
 		Bid res = bidRepository.save(existingBid);
+
 		return res;
 	}
 }
