@@ -8,9 +8,7 @@ import com.masai.model.Bid;
 public interface BidService {
 	public Bid submitBid(Bid bid)throws Exception;
 	
-	public List<Bid> getAllBidsByVendor(Integer vendorId) throws NotFoundException;
-	
-	public List<Bid> getBidHistoryByVendorId(Integer vendorId);
+	public List<Bid> getBidHistoryByVendorId(Integer vendorId) throws NotFoundException;
 	
 	public Bid getBidByBidId(Integer bidId) throws Exception;
 	

@@ -17,17 +17,17 @@ import com.masai.repository.VendorRepository;
 public class BidServiceImpl implements BidService {
 
 	@Autowired
-	private BidRepository bRepo;
+	private BidRepository bidRepository;
 
 	@Autowired
-	private VendorRepository vRepo;
+	private VendorRepository vendorRepository;
 
 	@Autowired
-	private TenderRepository tRepo;
+	private TenderRepository tenderRepository;
 	
 	@Override
-	public List<Bid> getAllBidsByVendor(Integer vendorId) throws NotFoundException {
-		Optional<Vendor> vendor = vRepo.findById(vendorId);
+	public List<Bid> getBidHistoryByVendorId(Integer vendorId) throws NotFoundException {
+		Optional<Vendor> vendor = vendorRepository.findById(vendorId);
 		if (vendor.isPresent()) {
 			Vendor v = vendor.get();
 			return v.getBidList();
@@ -45,32 +45,27 @@ public class BidServiceImpl implements BidService {
 		if (bid.getBidStatus() != "PENDING") {
 			throw new IllegalArgumentException("Bid Status must be PENDING");
 		}
-		List<Bid> existingBid = bRepo.findByTenderIdAndVendorId(bid.getTender().getTenderId(),bid.getVendor().getVendorId());
+		List<Bid> existingBid = bidRepository.findByTenderIdAndVendorId(bid.getTender().getTenderId(),bid.getVendor().getVendorId());
 		if (existingBid != null) {
 			throw new IllegalArgumentException("Vendor has already submitted a bid for this tender");
 		}
-		Tender tender = tRepo.findById(bid.getTender().getTenderId());
+		Tender tender = tenderRepository.findById(bid.getTender().getTenderId());
 	    if (tender == null) {
 	        throw new IllegalArgumentException("Tender is not open for bidding.");
 	    }
 	    bid.setBidStatus("Available");
-	    Bid res = bRepo.save(bid);
+	    Bid res = bidRepository.save(bid);
 	    return res;
 	}
 
 	@Override
-	public List<Bid> getBidHistoryByVendorId(Integer vendorId) {
-		return bRepo.findByVendorId(vendorId);
-	}
-
-	@Override
 	public Bid getBidByBidId(Integer bidId) throws Exception {
-		return bRepo.findById(bidId).orElseThrow(() -> new Exception("Record Not Found By this Id"));
+		return bidRepository.findById(bidId).orElseThrow(() -> new Exception("Record Not Found By this Id"));
 	}
 
 	@Override
 	public List<Bid> getBidsByTenderId(Integer tenderId) {
-		return bRepo.findByTenderId(tenderId);
+		return bidRepository.findByTenderId(tenderId);
 	}
 
 	@Override
@@ -78,12 +73,10 @@ public class BidServiceImpl implements BidService {
 		if (bidStatus == null || bidStatus.isEmpty()) {
 			throw new IllegalArgumentException("Bid Status must be provided");
 		}
-		Bid existingBid = bRepo.findById(bidId).orElse(null);
-		if (existingBid == null) {
-			throw new Exception("Bid id not found");
-		}
+		Bid existingBid = bidRepository.findById(bidId).orElseThrow(() -> new Exception("Record Not Found By this Id"));
+		
 		existingBid.setBidStatus(bidStatus);
-		Bid res = bRepo.save(existingBid);
+		Bid res = bidRepository.save(existingBid);
 		return res;
 	}
 }
