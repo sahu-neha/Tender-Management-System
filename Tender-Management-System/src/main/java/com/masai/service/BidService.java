@@ -6,7 +6,15 @@ import com.masai.exception.NotFoundException;
 import com.masai.model.Bid;
 
 public interface BidService {
-	public Bid saveBidRecord(Bid bid)throws Exception;
+	public Bid submitBid(Bid bid)throws Exception;
 	
 	public List<Bid> getAllBidsByVendor(Integer vendorId) throws NotFoundException;
+	
+	public List<Bid> getBidHistoryByVendorId(Integer vendorId);
+	
+	public Bid getBidByBidId(Integer bidId) throws Exception;
+	
+	public List<Bid> getBidsByTenderId(Integer tenderId);
+	
+	public Bid updateBidStatus(Integer bidId, String bidStatus) throws Exception;
 }

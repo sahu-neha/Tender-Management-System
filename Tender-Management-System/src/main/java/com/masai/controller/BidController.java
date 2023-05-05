@@ -22,7 +22,7 @@ public class BidController {
 	
 	@PostMapping("/Bids/")
 	public ResponseEntity<Bid> saveBidRecord(@RequestBody Bid bid) throws Exception {
-		Bid res = bService.saveBidRecord(bid);
+		Bid res = bService.submitBid(bid);
 		return new ResponseEntity<Bid>(res,HttpStatus.CREATED);
 	}
 	
