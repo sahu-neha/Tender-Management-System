@@ -37,26 +37,26 @@ public class BidServiceImpl implements BidService {
 
 	}
 
-	@Override
-	public Bid submitBid(Bid bid) throws Exception {
-		if (bid.getBidAmount() <= 0) {
-			throw new IllegalArgumentException("Bid Amount must be greater than 0");
-		}
-		if (bid.getBidStatus() != "PENDING") {
-			throw new IllegalArgumentException("Bid Status must be PENDING");
-		}
-		List<Bid> existingBid = bidRepository.findByTenderIdAndVendorId(bid.getTender().getTenderId(),bid.getVendor().getVendorId());
-		if (existingBid != null) {
-			throw new IllegalArgumentException("Vendor has already submitted a bid for this tender");
-		}
-		Tender tender = tenderRepository.findById(bid.getTender().getTenderId());
-	    if (tender == null) {
-	        throw new IllegalArgumentException("Tender is not open for bidding.");
-	    }
-	    bid.setBidStatus("Available");
-	    Bid res = bidRepository.save(bid);
-	    return res;
-	}
+//	@Override
+//	public Bid submitBid(Bid bid) throws Exception {
+//		if (bid.getBidAmount() <= 0) {
+//			throw new IllegalArgumentException("Bid Amount must be greater than 0");
+//		}
+//		if (bid.getBidStatus() != "PENDING") {
+//			throw new IllegalArgumentException("Bid Status must be PENDING");
+//		}
+//		List<Bid> existingBid = bidRepository.findByTenderIdAndVendorId(bid.getTender().getTenderId(),bid.getVendor().getVendorId());
+//		if (existingBid != null) {
+//			throw new IllegalArgumentException("Vendor has already submitted a bid for this tender");
+//		}
+//		Tender tender = tenderRepository.findById(bid.getTender().getTenderId());
+//	    if (tender == null) {
+//	        throw new IllegalArgumentException("Tender is not open for bidding.");
+//	    }
+//	    bid.setBidStatus("Available");
+//	    Bid res = bidRepository.save(bid);
+//	    return res;
+//	}
 
 	@Override
 	public Bid getBidByBidId(Integer bidId) throws Exception {
