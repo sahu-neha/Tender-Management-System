@@ -141,23 +141,29 @@ http://localhost:8080
 
 > Github: [sahu-neha](https://github.com/sahu-neha) 
 (Teamlead)
+
 > => created the controller of Admin.
+
 > => Implemented the service methods of Admin.
 
 #### Hoshiyar Singh Jyani
 
 > Github: [hoshiyarjyani](https://github.com/hoshiyarjyani)
+
 > => Created controller of Vendor.
+
 > => Implemented the service methods of Vendor.
 
 #### Paras Jamwal
 
->Github: [ParasThakur199](https://github.com/ParasThakur199)
+> Github: [ParasThakur199](https://github.com/ParasThakur199)
+
 > => Created controller of Bid.
+
 > => Implemented the service methods of Bid.
 
 #### Ramesh Yadav
 
->Github: [rameshy9891](https://github.com/rameshy9891)
+> Github: [rameshy9891](https://github.com/rameshy9891)
 //
 
