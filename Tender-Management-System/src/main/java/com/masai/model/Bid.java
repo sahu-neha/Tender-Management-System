@@ -1,7 +1,11 @@
 package com.masai.model;
 
+import com.masai.enums.BidStatus;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -36,7 +40,8 @@ public class Bid {
 	@Positive(message = "Days must be a positive number")
 	private Integer durationInDays;
 
-	@Column(columnDefinition = "VARCHAR(10) DEFAULT 'PENDING'")
-	private String bidStatus;
+	@Enumerated(EnumType.STRING)
+	@Column(columnDefinition = "VARCHAR(20) DEFAULT 'PENDING'")
+	private BidStatus bidStatus;
 
 }

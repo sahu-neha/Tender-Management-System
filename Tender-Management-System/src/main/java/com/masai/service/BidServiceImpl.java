@@ -6,11 +6,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.masai.enums.BidStatus;
 import com.masai.exception.NotFoundException;
 import com.masai.model.Bid;
-import com.masai.model.Tender;
 import com.masai.model.Vendor;
 import com.masai.repository.BidRepository;
+import com.masai.repository.TenderRepository;
 import com.masai.repository.VendorRepository;
 
 @Service
@@ -24,13 +25,19 @@ public class BidServiceImpl implements BidService {
 
 	@Autowired
 	private TenderRepository tenderRepository;
-	
+
 	@Override
 	public List<Bid> getBidHistoryByVendorId(Integer vendorId) throws NotFoundException {
 		Optional<Vendor> vendor = vendorRepository.findById(vendorId);
 		if (vendor.isPresent()) {
 			Vendor v = vendor.get();
-			return v.getBidList();
+			List<Bid> bidList = v.getBidList();
+			if (bidList.size() == 0) {
+				throw new NotFoundException("Bid not found");
+			} else {
+				return bidList;
+			}
+
 		} else {
 			throw new NotFoundException("Tender not found with id " + vendorId);
 		}
@@ -65,7 +72,7 @@ public class BidServiceImpl implements BidService {
 
 	@Override
 	public List<Bid> getBidsByTenderId(Integer tenderId) {
-		return bidRepository.findByTenderId(tenderId);
+		return bidRepository.findByTender(tenderId);
 	}
 
 	@Override
@@ -74,8 +81,9 @@ public class BidServiceImpl implements BidService {
 			throw new IllegalArgumentException("Bid Status must be provided");
 		}
 		Bid existingBid = bidRepository.findById(bidId).orElseThrow(() -> new Exception("Record Not Found By this Id"));
-		
-		existingBid.setBidStatus(bidStatus);
+
+		existingBid.setBidStatus(bidStatus.toLowerCase().equals("approved") ? BidStatus.APPROVED
+				: bidStatus.toLowerCase().equals("rejected") ? BidStatus.REJECTED : BidStatus.PENDING);
 		Bid res = bidRepository.save(existingBid);
 		return res;
 	}

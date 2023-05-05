@@ -8,12 +8,12 @@ import org.springframework.stereotype.Repository;
 import com.masai.model.Bid;
 
 @Repository
-public interface BidRepository extends JpaRepository<Bid, Integer>{
-	
-	List<Bid> findByTenderIdAndVendorId(Integer tenderId,Integer vendorId);
-	
-	List<Bid> findByVendorId(Integer vendorId);
-	
-	List<Bid> findByTenderId(Integer tenderId);
+public interface BidRepository extends JpaRepository<Bid, Integer> {
+
+	Bid findByTenderAndVendor(Integer tenderId, Integer vendorId);
+
+	List<Bid> findByVendor(Integer vendorId);
+
+	List<Bid> findByTender(Integer tenderId);
 
 }

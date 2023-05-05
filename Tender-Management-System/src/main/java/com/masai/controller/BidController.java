@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,16 +17,12 @@ import com.masai.model.Bid;
 import com.masai.service.BidService;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class BidController {
 	
 	@Autowired
 	private BidService bidService;
 	
-//	@PostMapping("/bids/")
-//	public ResponseEntity<Bid> saveBidRecord(@RequestBody Bid bid) throws Exception {
-//		Bid res = bidService.submitBid(bid);
-//		return new ResponseEntity<Bid>(res,HttpStatus.CREATED);
-//	}
 	
 	@GetMapping("bids/{vendorId}")
 	public ResponseEntity<List<Bid>> fetchAllBidsByVendor(@PathVariable Integer vendorId) throws NotFoundException{
