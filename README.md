@@ -125,14 +125,15 @@ Open the following URL for Swagger-UI
 http://localhost:8080/swagger-ui/
 ```
 
-> ## ER Diagram
-
-//
-
 > ## URL
 ```bash
 http://localhost:8080
 ```
+
+> ## ER Diagram
+
+//
+
 
 > ## Contributors
 
