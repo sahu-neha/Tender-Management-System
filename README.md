@@ -2,10 +2,14 @@
 
 ![tms](https://user-images.githubusercontent.com/109987397/236569887-8214b120-29f1-4245-8783-69e9630b246b.png)
 
+> ## Domain Description
+
 The Tender Management System is a web-based application designed for companies to manage tenders, empaneled vendors, and bids. The system has two types of users: administrators and vendors. Administrators can create new tenders, view all the vendors and tenders, and assign tenders to vendors. Vendors can view current tenders, place bids, view their bid history, and search for tenders by tender id or date range.
 
+<!--
 > ## Domain Description
-Whenever a company requires a service/merchandise, a tender is floated. The company maintains an empaneled list of Vendors. An empaneled vendor can only bid for a tender. Every vendor can bid only once against each tender. Against each tender, there may be bids from several vendors. The company will then select the most suitable bid and places the order with that vendor.
+Whenever a company requires a service/merchandise, a tender is floated. The company maintains an empaneled list of Vendors. An empaneled vendor can only bid for a tender. Every vendor can bid only once against each tender. Against each tender, there may be bids from several vendors. The company will then select the most suitable bid and places the order with that vendor. 
+-->
 
 > ## REST A.P.I.
 The API is designed to provide a wide range of functionalities for managing tenders, vendors, and bids along with different functionalities of admin and its information.
