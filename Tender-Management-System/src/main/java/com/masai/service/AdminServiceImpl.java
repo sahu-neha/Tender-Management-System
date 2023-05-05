@@ -131,7 +131,7 @@ public class AdminServiceImpl implements AdminService {
 		if (vendors.size() == 0) {
 			throw new VendorException("No Vendors available");
 		} else {
-			return vendors;
+			return vendors.stream().filter(s -> s.getIsActive()).collect(Collectors.toList());
 		}
 	}
 

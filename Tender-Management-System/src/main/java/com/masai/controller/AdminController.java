@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.exception.NotFoundException;
 import com.masai.exception.TenderException;
 import com.masai.exception.VendorException;
+import com.masai.model.Bid;
 import com.masai.model.Tender;
 import com.masai.model.Vendor;
 import com.masai.service.AdminService;
@@ -107,6 +107,19 @@ public class AdminController {
 	// =========================== VENDOR METHODS =========================== //
 	// ---------------------------------------------------------------------- //
 
+	// ========== G E T - A L L - V E N D O R S ========== //
+
+	@GetMapping("/activeVendors")
+	public ResponseEntity<List<Vendor>> viewActiveVendorsHandler() throws VendorException, NotFoundException {
+
+		List<Vendor> vendors = adminService.viewAllVendors();
+
+		if (vendors.size() == 0)
+			throw new VendorException("No Vendor Found");
+		return new ResponseEntity<>(vendors, HttpStatus.FOUND);
+
+	}
+
 	// ========== D E A C T I V A T E - A - V E N D O R ========== //
 
 	@PatchMapping("/deactivateVendor/{id}")
@@ -135,7 +148,14 @@ public class AdminController {
 
 	// ========== A S S I G N - T E N D E R - T O - A - V E N D O R ========== //
 
-//	@PutMapping("/assign")
-	
-	
+	@PutMapping("/bid/assign/{tenderId}/{vendorId}")
+	public ResponseEntity<Bid> assignTenderToVendorHandler(@PathVariable("tenderId") Integer tenderId,
+			@PathVariable("vendorId") Integer vendorId) throws VendorException, TenderException, NotFoundException {
+
+		Bid bid = adminService.assignTenderToVendor(vendorId, tenderId);
+
+		return new ResponseEntity<>(bid, HttpStatus.ACCEPTED);
+
+	}
+
 }
