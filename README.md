@@ -130,5 +130,29 @@ http://localhost:8080/swagger-ui/
 http://localhost:8080
 ```
 
-> ## Conclusion
-The Tender Management System is an essential tool for companies that want to manage tenders efficiently. With this system, companies can easily manage tenders, empaneled vendors, and bids, making the tendering process more transparent and effective.
+> ## Contributors
+
+#### Neha Sahu
+
+> Github: [sahu-neha](https://github.com/sahu-neha) 
+(Teamlead)
+> => created the controller of Admin.
+> => Implemented the service methods of Admin.
+
+#### Hoshiyar Singh Jyani
+
+> Github: [hoshiyarjyani](https://github.com/hoshiyarjyani)
+> => Created controller of Vendor.
+> => Implemented the service methods of Vendor.
+
+#### Paras Jamwal
+
+>Github: [ParasThakur199](https://github.com/ParasThakur199)
+> => Created controller of Bid.
+> => Implemented the service methods of Bid.
+
+#### Ramesh Yadav
+
+>Github: [rameshy9891](https://github.com/rameshy9891)
+//
+
