@@ -42,6 +42,7 @@ public class AdminController {
 	public ResponseEntity<Tender> registerTenderHandler(@Valid @RequestBody Tender tender) throws TenderException {
 
 		Tender createdTender = adminService.createTender(tender);
+
 		return new ResponseEntity<>(createdTender, HttpStatus.CREATED);
 
 	}
@@ -55,6 +56,7 @@ public class AdminController {
 
 		if (tenders.size() == 0)
 			throw new TenderException("No Tender Found");
+
 		return new ResponseEntity<>(tenders, HttpStatus.FOUND);
 
 	}
@@ -66,6 +68,7 @@ public class AdminController {
 			throws TenderException, NotFoundException {
 
 		Tender tender = adminService.viewTendersById(id);
+
 		return new ResponseEntity<>(tender, HttpStatus.FOUND);
 
 	}
@@ -77,6 +80,7 @@ public class AdminController {
 			throws TenderException, NotFoundException {
 
 		List<Tender> tenders = adminService.viewTendersByStatus(status);
+
 		return new ResponseEntity<>(tenders, HttpStatus.FOUND);
 
 	}
@@ -88,6 +92,7 @@ public class AdminController {
 			throws TenderException, NotFoundException {
 
 		Tender tender = adminService.removeTender(id);
+
 		return new ResponseEntity<>(tender, HttpStatus.OK);
 
 	}
@@ -99,6 +104,7 @@ public class AdminController {
 			throws TenderException, NotFoundException {
 
 		Tender tender = adminService.updateTender(t, id);
+
 		return new ResponseEntity<>(tender, HttpStatus.ACCEPTED);
 
 	}
@@ -116,6 +122,7 @@ public class AdminController {
 
 		if (vendors.size() == 0)
 			throw new VendorException("No Vendor Found");
+
 		return new ResponseEntity<>(vendors, HttpStatus.FOUND);
 
 	}
@@ -127,6 +134,7 @@ public class AdminController {
 			throws VendorException, NotFoundException {
 
 		Vendor vendor = adminService.deactivateVendor(id);
+
 		return new ResponseEntity<>(vendor, HttpStatus.ACCEPTED);
 
 	}
@@ -138,6 +146,7 @@ public class AdminController {
 			throws VendorException, NotFoundException {
 
 		Vendor vendor = adminService.deactivateVendor(id);
+
 		return new ResponseEntity<>(vendor, HttpStatus.ACCEPTED);
 
 	}

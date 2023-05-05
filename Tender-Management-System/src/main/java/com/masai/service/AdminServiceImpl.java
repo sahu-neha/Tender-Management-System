@@ -41,8 +41,10 @@ public class AdminServiceImpl implements AdminService {
 	public Tender createTender(Tender tender) throws TenderException {
 
 		Optional<Tender> opt = null;
-		if (tender.getTenderId() != null)
+
+		if (tender.getTenderId() != null) {
 			opt = tenderRepository.findById(tender.getTenderId());
+		}
 
 		if (opt != null && opt.isPresent()) {
 			throw new TenderException("Tender Already Created");
@@ -50,17 +52,21 @@ public class AdminServiceImpl implements AdminService {
 			Tender savedTender = tenderRepository.save(tender);
 			return savedTender;
 		}
+
 	}
 
 	// ========== R E M O V E - E X I S T I N G - T E N D E R ========== //
 
 	@Override
 	public Tender removeTender(Integer tenderId) throws TenderException {
+
 		Optional<Tender> opt = tenderRepository.findById(tenderId);
+
 		if (!opt.isPresent())
 			throw new TenderException("Tender with this Tender ID doesn't exist");
 
 		tenderRepository.delete(opt.get());
+
 		return opt.get();
 	}
 
@@ -68,9 +74,11 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public Tender updateTender(Tender tender, Integer id) throws TenderException {
+
 		Optional<Tender> t = tenderRepository.findById(id);
 
 		Tender t1 = t.orElseThrow(() -> new TenderException("Not valid Id"));
+
 		t1.setTitle(tender.getTitle());
 		t1.setDescription(tender.getDescription());
 		t1.setTenderPrice(tender.getTenderPrice());
@@ -83,31 +91,38 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public List<Tender> viewAllTenders() throws TenderException {
+
 		List<Tender> tenders = tenderRepository.findAll();
+
 		if (tenders.size() == 0) {
 			throw new TenderException("No Tenders available");
 		} else {
 			return tenders;
 		}
+
 	}
 
 	// ========== G E T - T E N D E R - B Y - I D ========== //
 
 	@Override
 	public Tender viewTendersById(Integer tenderId) throws TenderException {
+
 		Optional<Tender> opt = tenderRepository.findById(tenderId);
+
 		if (opt.isPresent()) {
 			Tender viewTender = opt.get();
 			return viewTender;
 		} else {
 			throw new TenderException("Tender not Found");
 		}
+
 	}
 
 	// ========== G E T - T E N D E R S - B Y - S T A T U S ========== //
 
 	@Override
 	public List<Tender> viewTendersByStatus(String status) throws TenderException {
+
 		List<Tender> tenders = tenderRepository.findAll();
 
 		List<Tender> tenderListByStatus = tenders.stream().filter(t -> t.getStatus().equals(status))
@@ -118,7 +133,9 @@ public class AdminServiceImpl implements AdminService {
 		} else {
 			return tenderListByStatus;
 		}
+
 	}
+
 	// ---------------------------------------------------------------------- //
 	// =========================== VENDOR METHODS =========================== //
 	// ---------------------------------------------------------------------- //
@@ -127,12 +144,15 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public List<Vendor> viewAllVendors() throws VendorException {
+
 		List<Vendor> vendors = vendorRepository.findAll();
+
 		if (vendors.size() == 0) {
 			throw new VendorException("No Vendors available");
 		} else {
 			return vendors.stream().filter(s -> s.getIsActive()).collect(Collectors.toList());
 		}
+
 	}
 
 	// ========== D E A C T I V A T E - A - V E N D O R ========== //
@@ -143,6 +163,7 @@ public class AdminServiceImpl implements AdminService {
 		Optional<Vendor> v = vendorRepository.findById(vendorId);
 
 		Vendor v1 = v.orElseThrow(() -> new VendorException("No Vendor available with Vendor ID : " + vendorId));
+
 		v1.setIsActive(false);
 
 		return vendorRepository.save(v1);
@@ -157,6 +178,7 @@ public class AdminServiceImpl implements AdminService {
 		Optional<Vendor> v = vendorRepository.findById(vendorId);
 
 		Vendor v1 = v.orElseThrow(() -> new VendorException("No Vendor available with Vendor ID : " + vendorId));
+
 		v1.setIsEligible(false);
 
 		return vendorRepository.save(v1);
@@ -182,9 +204,11 @@ public class AdminServiceImpl implements AdminService {
 		if (!v.getIsActive()) {
 			throw new VendorException("Vendor Account is not active");
 		}
+
 		if (!v.getIsEligible()) {
 			throw new VendorException("Vendor is not eligible for bidding");
 		}
+
 		t.setAssignedVendor(v);
 		t.setStatus(TenderStatus.BOOKED);
 
