@@ -1,7 +1,6 @@
 
 package com.masai.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -14,6 +13,7 @@ import com.masai.exception.VendorException;
 import com.masai.model.Bid;
 import com.masai.model.Tender;
 import com.masai.model.Vendor;
+import com.masai.repository.BidRepository;
 import com.masai.repository.TenderRepository;
 import com.masai.repository.VendorRepository;
 
@@ -24,6 +24,9 @@ public class VendorServiceImpl implements VendorService {
 
 	@Autowired
 	private TenderRepository tenderRepository;
+	
+	@Autowired
+	private BidRepository bidRepository;
 
 	// This Method For Add New Vendor - @Author HoshiyarJyani
 	@Override
@@ -74,9 +77,10 @@ public class VendorServiceImpl implements VendorService {
 		    Optional<Tender> optionalTender = tenderRepository.findById(tenderId);
 		    if (optionalTender.isPresent()) {
 		        Tender tender = optionalTender.get();
-		        if (!"Available".equals(tender.getStatus())) {
-		            throw new TenderException("Cannot place bid. Tender is not available.");
-		        }
+		        
+//		        if (!("AVAILABLE".equals(tender.getStatus()))) {
+//		            throw new TenderException("Cannot place bid. Tender is not available.");
+//		        }
 
 		        Optional<Vendor> optionalVendor = vendorRepository.findById(vendorId);
 		        if (optionalVendor.isPresent()) {
@@ -85,7 +89,9 @@ public class VendorServiceImpl implements VendorService {
 		            bid.setVendor(vendor);
 		            tender.getBidList().add(bid);
 		            vendor.getBidList().add(bid);
+		            bidRepository.save(bid);
 		            tenderRepository.save(tender);
+		            vendorRepository.save(vendor);
 		        } else {
 		            throw new VendorException("Vendor not found with ID: " + vendorId);
 		        }

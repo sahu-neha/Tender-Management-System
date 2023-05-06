@@ -57,7 +57,7 @@ public class VendorController {
 
 	// This Method for the Place a Bid against a Tender.
 
-	@PostMapping("/tenders/{tenderId}/{vendorId}/bids")
+	@PostMapping("/tenders/{tenderId}/{vendorId}")
 	public ResponseEntity<String> placeBid(@PathVariable Integer tenderId,@PathVariable Integer vendorId, @RequestBody Bid bid)
 			throws TenderException, VendorException {
 		vendorService.placeBid(tenderId,vendorId, bid);
