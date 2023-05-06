@@ -12,6 +12,7 @@ import com.masai.enums.TenderStatus;
 import com.masai.exception.NotFoundException;
 import com.masai.exception.TenderException;
 import com.masai.exception.VendorException;
+import com.masai.model.AssignDTO;
 import com.masai.model.Bid;
 import com.masai.model.Tender;
 import com.masai.model.Vendor;
@@ -142,20 +143,19 @@ public class AdminServiceImpl implements AdminService {
 
 	// ========== G E T - A L L - V E N D O R S ========== //
 
-		@Override
-		public List<Vendor> viewAllVendors() throws VendorException {
+	@Override
+	public List<Vendor> viewAllVendors() throws VendorException {
 
-			List<Vendor> vendors = vendorRepository.findAll();
+		List<Vendor> vendors = vendorRepository.findAll();
 
-			if (vendors.size() == 0) {
-				throw new VendorException("No Vendors available");
-			} else {
-				return vendors;
-			}
-
+		if (vendors.size() == 0) {
+			throw new VendorException("No Vendors available");
+		} else {
+			return vendors;
 		}
-	
-	
+
+	}
+
 	// ========== G E T - A C T I V E - V E N D O R S ========== //
 
 	@Override
@@ -208,14 +208,13 @@ public class AdminServiceImpl implements AdminService {
 	// ========== A S S I G N - T E N D E R - T O - A - V E N D O R ========== //
 
 	@Override
-	public Bid assignTenderToVendor(Integer vendorId, Integer tenderId)
-			throws VendorException, TenderException, NotFoundException {
+	public Bid assignTenderToVendor(AssignDTO ad) throws VendorException, TenderException, NotFoundException {
 
-		Tender t = tenderRepository.findById(tenderId)
-				.orElseThrow(() -> new TenderException("No tender available with tender id : " + tenderId));
+		Tender t = tenderRepository.findById(ad.getTenderId())
+				.orElseThrow(() -> new TenderException("No tender available with tender id : " + ad.getTenderId()));
 
-		Vendor v = vendorRepository.findById(vendorId)
-				.orElseThrow(() -> new TenderException("No vendor available with vendor id : " + vendorId));
+		Vendor v = vendorRepository.findById(ad.getVenderId())
+				.orElseThrow(() -> new TenderException("No vendor available with vendor id : " + ad.getVenderId()));
 
 		if (!v.getIsActive()) {
 			throw new VendorException("Vendor Account is not active");
@@ -228,21 +227,38 @@ public class AdminServiceImpl implements AdminService {
 		t.setAssignedVendor(v);
 		t.setStatus(TenderStatus.BOOKED);
 
-		Bid bid = bidRepository.findByTenderAndVendor(tenderId, vendorId);
+		Bid b = null;
 
-		bid.setBidStatus(BidStatus.APPROVED);
-
-		v.getBidList().forEach(s -> {
-			if (s.getId() == bid.getId()) {
+		List<Bid> list = v.getBidList();
+		for (Bid s : list) {
+			if (s.getTender().getTenderId() == ad.getTenderId() && s.getVendor().getVendorId() == ad.getVenderId()) {
 				s.setBidStatus(BidStatus.APPROVED);
+				b = s;
 			}
-		});
-
+		}
+		
 		tenderRepository.save(t);
 		vendorRepository.save(v);
-		bidRepository.save(bid);
 
-		return bid;
+		return b;
+	}
+
+	// ========== G E T - A L L - B I D S - O F - A - T E N D E R ========== //
+
+	@Override
+	public List<Bid> viewAllBidsOfATender(Integer tenderId) throws NotFoundException, TenderException {
+
+		Tender t = tenderRepository.findById(tenderId)
+				.orElseThrow(() -> new TenderException("No tender available with tender id : " + tenderId));
+
+		List<Bid> bids = t.getBidList();
+
+		if (bids.size() == 0) {
+			throw new NotFoundException("No Bid available");
+		} else {
+			return bids;
+		}
+
 	}
 
 }
