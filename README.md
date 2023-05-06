@@ -158,9 +158,9 @@ http://localhost:8080
 
 > Github: [ParasThakur199](https://github.com/ParasThakur199)
 
-> => Created controller of Bid.
+> => Created controller of User Log In, Bid.
 
-> => Implemented the service methods of Bid.
+> => Implemented the service methods of User Log In, Bid.
 
 #### Ramesh Yadav
 
