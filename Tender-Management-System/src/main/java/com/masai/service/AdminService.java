@@ -45,7 +45,15 @@ public interface AdminService {
 
 	// ========== G E T - A L L - V E N D O R S ========== //
 
-	List<Vendor> viewAllVendors() throws VendorException;
+		List<Vendor> viewAllVendors() throws VendorException;
+	
+	
+	// ========== G E T - A C T I V E - V E N D O R S ========== //
+
+	List<Vendor> viewActiveVendors() throws VendorException;
+	
+	
+	
 
 	// ========== D E A C T I V A T E - A - V E N D O R ========== //
 

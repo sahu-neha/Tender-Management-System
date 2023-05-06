@@ -41,7 +41,6 @@ public class Bid {
 	private Integer durationInDays;
 
 	@Enumerated(EnumType.STRING)
-	@Column(columnDefinition = "VARCHAR(20) DEFAULT 'PENDING'")
-	private BidStatus bidStatus;
+	private BidStatus bidStatus = BidStatus.PENDING;
 
 }

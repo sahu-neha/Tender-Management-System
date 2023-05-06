@@ -16,5 +16,4 @@ public interface VendorRepository extends JpaRepository<Vendor, Integer> {
 	// This Method For the find Vendor by his UserName
 	public Optional<Vendor> findByUsername(String username);
 
-
 }
