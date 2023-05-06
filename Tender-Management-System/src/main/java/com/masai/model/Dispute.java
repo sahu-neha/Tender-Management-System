@@ -27,9 +27,9 @@ public class Dispute {
 	@OneToOne
 	@JoinColumn(name = "vendorId")
 	private Vendor vendor;
-	
-	@NotBlank(message = "Message is required")
-	private String message;
+
+	@NotBlank(message = "Subject is required")
+	private String disputeSubject;
 
 	private boolean isResolved;
 

@@ -73,4 +73,14 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
 	}
 
+	@ExceptionHandler(DisputeException.class)
+	public ResponseEntity<MyErrorDetails> exceptionHandler6(DisputeException ce, WebRequest req) {
+		MyErrorDetails err = new MyErrorDetails();
+		err.setTimpstamp(LocalDateTime.now());
+		err.setMessage(ce.getMessage());
+		err.setDetails(req.getDescription(false));
+
+		return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
+	}
+
 }

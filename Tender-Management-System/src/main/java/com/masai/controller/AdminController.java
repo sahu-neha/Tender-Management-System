@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.masai.exception.NotFoundException;
 import com.masai.exception.TenderException;
 import com.masai.exception.VendorException;
+import com.masai.model.AssignDTO;
 import com.masai.model.Bid;
 import com.masai.model.Tender;
 import com.masai.model.Vendor;
@@ -37,6 +38,15 @@ public class AdminController {
 	// ---------------------------------------------------------------------- //
 
 	// ========== A D D - N E W - T E N D E R ========== //
+	
+	/**
+	 * This method adds a new tender to the system.
+	 *
+	 * @param tender : The tender object to be added
+	 * @return A ResponseEntity object containing the saved tender and HTTP status
+	 *         code CREATED
+	 * @Author sahu-neha
+	 */
 
 	@PostMapping("/tenders")
 	public ResponseEntity<Tender> registerTenderHandler(@Valid @RequestBody Tender tender) throws TenderException {
@@ -49,6 +59,15 @@ public class AdminController {
 
 	// ========== G E T - A L L - T E N D E R S ========== //
 
+	/**
+	 * This method retrieves a list of all tenders.
+	 *
+	 * @return A ResponseEntity object containing the list of tenders and HTTP
+	 *         status code FOUND
+	 * @throws TenderException If no tenders are available
+	 * @Author sahu-neha
+	 */
+	
 	@GetMapping("/tenders")
 	public ResponseEntity<List<Tender>> viewAllTendersHandler() throws TenderException, NotFoundException {
 
@@ -113,7 +132,6 @@ public class AdminController {
 	// =========================== VENDOR METHODS =========================== //
 	// ---------------------------------------------------------------------- //
 
-	
 	// ========== G E T - A L L - V E N D O R S ========== //
 
 	@GetMapping("/vendors")
@@ -127,8 +145,7 @@ public class AdminController {
 		return new ResponseEntity<>(vendors, HttpStatus.FOUND);
 
 	}
-	
-	
+
 	// ========== G E T - A C T I V E - V E N D O R S ========== //
 
 	@GetMapping("/activeVendors")
@@ -142,8 +159,6 @@ public class AdminController {
 		return new ResponseEntity<>(vendors, HttpStatus.FOUND);
 
 	}
-	
-	
 
 	// ========== D E A C T I V A T E - A - V E N D O R ========== //
 
@@ -175,13 +190,25 @@ public class AdminController {
 
 	// ========== A S S I G N - T E N D E R - T O - A - V E N D O R ========== //
 
-	@PutMapping("/bid/assign/{tenderId}/{vendorId}")
-	public ResponseEntity<Bid> assignTenderToVendorHandler(@PathVariable("tenderId") Integer tenderId,
-			@PathVariable("vendorId") Integer vendorId) throws VendorException, TenderException, NotFoundException {
+	@PutMapping("/bid/assign")
+	public ResponseEntity<Bid> assignTenderToVendorHandler(@RequestBody AssignDTO ad)
+			throws VendorException, TenderException, NotFoundException {
 
-		Bid bid = adminService.assignTenderToVendor(vendorId, tenderId);
+		Bid bid = adminService.assignTenderToVendor(ad);
 
 		return new ResponseEntity<>(bid, HttpStatus.ACCEPTED);
+
+	}
+
+	// ========== G E T - A L L - B I D S - O F - A - T E N D E R ========== //
+
+	@GetMapping("/tenders/bid/{tenderId}")
+	public ResponseEntity<List<Bid>> viewAllBidsOfATenderHandler(Integer tenderId)
+			throws NotFoundException, TenderException {
+
+		List<Bid> bids = adminService.viewAllBidsOfATender(tenderId);
+
+		return new ResponseEntity<>(bids, HttpStatus.FOUND);
 
 	}
 

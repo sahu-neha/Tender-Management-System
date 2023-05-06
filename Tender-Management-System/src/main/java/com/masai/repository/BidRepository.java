@@ -11,8 +11,9 @@ import com.masai.model.Bid;
 
 @Repository
 public interface BidRepository extends JpaRepository<Bid, Integer> {
-
-	Bid findByTenderAndVendor(Integer tenderId, Integer vendorId);
+	
+	@Query("select b from Bid b  where b.tender=?1 AND b.vendor=?2")
+	Bid findByTenderIdAndVendorId( Integer tenderId, Integer vendorId);
 
 	List<Bid> findByVendor(Integer vendorId);
 

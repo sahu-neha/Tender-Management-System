@@ -5,6 +5,7 @@ import java.util.List;
 import com.masai.exception.NotFoundException;
 import com.masai.exception.TenderException;
 import com.masai.exception.VendorException;
+import com.masai.model.AssignDTO;
 import com.masai.model.Bid;
 import com.masai.model.Tender;
 import com.masai.model.Vendor;
@@ -45,15 +46,11 @@ public interface AdminService {
 
 	// ========== G E T - A L L - V E N D O R S ========== //
 
-		List<Vendor> viewAllVendors() throws VendorException;
-	
-	
+	public List<Vendor> viewAllVendors() throws VendorException;
+
 	// ========== G E T - A C T I V E - V E N D O R S ========== //
 
-	List<Vendor> viewActiveVendors() throws VendorException;
-	
-	
-	
+	public List<Vendor> viewActiveVendors() throws VendorException;
 
 	// ========== D E A C T I V A T E - A - V E N D O R ========== //
 
@@ -69,7 +66,11 @@ public interface AdminService {
 
 	// ========== A S S I G N - T E N D E R - T O - A - V E N D O R ========== //
 
-	public Bid assignTenderToVendor(Integer vendorId, Integer tenderId)
+	public Bid assignTenderToVendor(AssignDTO ad)
 			throws VendorException, TenderException, NotFoundException;
+
+	// ========== G E T - A L L - B I D S - O F - A - T E N D E R ========== //
+
+	public List<Bid> viewAllBidsOfATender(Integer tenderId) throws TenderException, NotFoundException;
 
 }
