@@ -124,10 +124,12 @@ public class VendorController {
 	 *                 retrieved
 	 * @return A ResponseEntity object containing the list of bids made by the
 	 *         vendor and HTTP status code OK
+	 * @throws VendorException 
+	 * @throws NotFoundException 
 	 * @Author HoshiyarJyani
 	 */
 	@GetMapping("/vendors/bidHistory/{vendorId}")
-	public ResponseEntity<List<Bid>> viewBidHistoryHandler(@PathVariable Integer vendorId) {
+	public ResponseEntity<List<Bid>> viewBidHistoryHandler(@PathVariable Integer vendorId) throws NotFoundException, VendorException {
 		List<Bid> bidHistory = vendorService.viewBidHistory(vendorId);
 		return new ResponseEntity<>(bidHistory, HttpStatus.OK);
 	}

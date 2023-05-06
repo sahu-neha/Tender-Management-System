@@ -168,11 +168,24 @@ public class VendorServiceImpl implements VendorService {
 	 *                 retrieved
 	 * @return A ResponseEntity object containing the list of bids made by the
 	 *         vendor and HTTP status code OK
+	 * @throws NotFoundException 
+	 * @throws VendorException 
 	 * @Author HoshiyarJyani
 	 */
 	@Override
-	public List<Bid> viewBidHistory(Integer vendorId) {
-		return bidRepository.findBidHistoryByVendorId(vendorId);
+	public List<Bid> viewBidHistory(Integer vendorId) throws NotFoundException, VendorException {
+		Optional<Vendor> optionalVendor = vendorRepository.findById(vendorId);
+		if (optionalVendor.isPresent()) {
+			Vendor vendor = optionalVendor.get();
+			List<Bid> bidList =  bidRepository.findBidHistoryByVendorId(vendorId);
+			if(bidList.size()==0) {
+				throw new NotFoundException("Bid Not Found");
+			}
+			return bidList;
+		}else {
+			throw new VendorException("Vendor Not Found with id "+vendorId);
+		}
+		
 	}
 
 }

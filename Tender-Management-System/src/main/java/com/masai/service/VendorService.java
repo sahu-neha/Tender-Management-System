@@ -79,8 +79,10 @@ public interface VendorService {
 	 *                 retrieved
 	 * @return A ResponseEntity object containing the list of bids made by the
 	 *         vendor and HTTP status code OK
+	 * @throws NotFoundException 
+	 * @throws VendorException 
 	 * @Author HoshiyarJyani
 	 */
-	public List<Bid> viewBidHistory(Integer vendorId);
+	public List<Bid> viewBidHistory(Integer vendorId) throws NotFoundException, VendorException;
 
 }
