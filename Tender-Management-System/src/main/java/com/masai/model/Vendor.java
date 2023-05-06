@@ -3,6 +3,8 @@ package com.masai.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -44,6 +46,7 @@ public class Vendor {
 
 	private Boolean isEligible = true;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "vendor",cascade = CascadeType.ALL)
 	private List<Bid> bidList  = new ArrayList<>();
 

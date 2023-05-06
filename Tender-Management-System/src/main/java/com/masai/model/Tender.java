@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.masai.enums.TenderStatus;
 
 import jakarta.persistence.Column;
@@ -56,7 +57,8 @@ public class Tender {
 
 	@OneToMany
 	private List<Vendor> vendorList = new ArrayList<>();
-
+    
+	@JsonIgnore
 	@OneToMany(mappedBy = "tender")
 	private List<Bid> bidList = new ArrayList<>();
 
