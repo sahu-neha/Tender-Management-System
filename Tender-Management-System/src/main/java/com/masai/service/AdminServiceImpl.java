@@ -142,8 +142,24 @@ public class AdminServiceImpl implements AdminService {
 
 	// ========== G E T - A L L - V E N D O R S ========== //
 
+		@Override
+		public List<Vendor> viewAllVendors() throws VendorException {
+
+			List<Vendor> vendors = vendorRepository.findAll();
+
+			if (vendors.size() == 0) {
+				throw new VendorException("No Vendors available");
+			} else {
+				return vendors;
+			}
+
+		}
+	
+	
+	// ========== G E T - A C T I V E - V E N D O R S ========== //
+
 	@Override
-	public List<Vendor> viewAllVendors() throws VendorException {
+	public List<Vendor> viewActiveVendors() throws VendorException {
 
 		List<Vendor> vendors = vendorRepository.findAll();
 

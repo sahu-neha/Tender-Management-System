@@ -19,8 +19,8 @@ public interface VendorService {
 	//This Method For Get The List Of All Tenders that are Available - @Author HoshiyarJyani
 	public List<Tender> viewAllTenders() throws TenderException;
 
-	public String placeBid(Integer tenderId, Bid bid) throws TenderException;
-
+	//This Method for Place a bid by Vendor Againest a Tender
+	public String placeBid(Integer tenderId,Integer vendorId, Bid bid) throws TenderException, VendorException;
 	
 	
 }

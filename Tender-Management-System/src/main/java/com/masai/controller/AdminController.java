@@ -113,10 +113,11 @@ public class AdminController {
 	// =========================== VENDOR METHODS =========================== //
 	// ---------------------------------------------------------------------- //
 
+	
 	// ========== G E T - A L L - V E N D O R S ========== //
 
-	@GetMapping("/activeVendors")
-	public ResponseEntity<List<Vendor>> viewActiveVendorsHandler() throws VendorException, NotFoundException {
+	@GetMapping("/vendors")
+	public ResponseEntity<List<Vendor>> viewAllVendorsHandler() throws VendorException, NotFoundException {
 
 		List<Vendor> vendors = adminService.viewAllVendors();
 
@@ -126,6 +127,23 @@ public class AdminController {
 		return new ResponseEntity<>(vendors, HttpStatus.FOUND);
 
 	}
+	
+	
+	// ========== G E T - A C T I V E - V E N D O R S ========== //
+
+	@GetMapping("/activeVendors")
+	public ResponseEntity<List<Vendor>> viewActiveVendorsHandler() throws VendorException, NotFoundException {
+
+		List<Vendor> vendors = adminService.viewActiveVendors();
+
+		if (vendors.size() == 0)
+			throw new VendorException("No Vendor Found");
+
+		return new ResponseEntity<>(vendors, HttpStatus.FOUND);
+
+	}
+	
+	
 
 	// ========== D E A C T I V A T E - A - V E N D O R ========== //
 

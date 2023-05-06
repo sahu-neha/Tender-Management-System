@@ -57,10 +57,10 @@ public class VendorController {
 
 	// This Method for the Place a Bid against a Tender.
 
-	@PostMapping("/tenders/{tenderId}/bids")
-	public ResponseEntity<String> placeBid(@PathVariable Integer tenderId, @RequestBody Bid bid)
-			throws TenderException {
-		vendorService.placeBid(tenderId, bid);
+	@PostMapping("/tenders/{tenderId}/{vendorId}/bids")
+	public ResponseEntity<String> placeBid(@PathVariable Integer tenderId,@PathVariable Integer vendorId, @RequestBody Bid bid)
+			throws TenderException, VendorException {
+		vendorService.placeBid(tenderId,vendorId, bid);
 		return new ResponseEntity<>("Bid placed successfully", HttpStatus.CREATED);
 	}
 

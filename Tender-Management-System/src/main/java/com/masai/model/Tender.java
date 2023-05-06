@@ -48,8 +48,7 @@ public class Tender {
 	private Integer tenderPrice;
 
 	@Enumerated(EnumType.STRING)
-	@Column(columnDefinition = "VARCHAR(10) DEFAULT 'AVAILABLE'")
-	private TenderStatus status;
+	private TenderStatus status = TenderStatus.AVAILABLE;
 
 	@OneToOne
 	@JoinColumn(name = "vendorId")

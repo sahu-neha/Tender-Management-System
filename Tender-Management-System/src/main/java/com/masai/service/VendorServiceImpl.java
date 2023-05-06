@@ -69,23 +69,30 @@ public class VendorServiceImpl implements VendorService {
 
 	// This Method for the Place a Bid against a Tender.
 
-	@Override
-	public String placeBid(Integer tenderId, Bid bid) throws TenderException {
-		Optional<Tender> optionalTender = tenderRepository.findById(tenderId);
-		if (optionalTender.isPresent()) {
-			Tender tender = optionalTender.get();
-			if (!tender.getStatus().equals("Available")) {
-				throw new TenderException("Cannot place bid. Tender is not available.");
-			}
-			bid.setTender(tender);
-			Vendor vendor = bid.getVendor();
-			bid.setVendor(vendor);
-			tender.getBidList().add(bid);
-			tenderRepository.save(tender);
-		} else {
-			throw new TenderException("Tender not found with ID: " + tenderId);
+		@Override
+		public String placeBid(Integer tenderId, Integer vendorId, Bid bid) throws TenderException, VendorException {
+		    Optional<Tender> optionalTender = tenderRepository.findById(tenderId);
+		    if (optionalTender.isPresent()) {
+		        Tender tender = optionalTender.get();
+		        if (!"Available".equals(tender.getStatus())) {
+		            throw new TenderException("Cannot place bid. Tender is not available.");
+		        }
+
+		        Optional<Vendor> optionalVendor = vendorRepository.findById(vendorId);
+		        if (optionalVendor.isPresent()) {
+		            Vendor vendor = optionalVendor.get();
+		            bid.setTender(tender);
+		            bid.setVendor(vendor);
+		            tender.getBidList().add(bid);
+		            vendor.getBidList().add(bid);
+		            tenderRepository.save(tender);
+		        } else {
+		            throw new VendorException("Vendor not found with ID: " + vendorId);
+		        }
+		    } else {
+		        throw new TenderException("Tender not found with ID: " + tenderId);
+		    }
+		    return "Bid Placed Successfully. Your bid price is " + bid.getBidAmount() + ". Please wait for final approval by Admin.";
 		}
-		return null;
-	}
 
 }
