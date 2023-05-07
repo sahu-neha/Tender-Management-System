@@ -21,18 +21,16 @@ The application also includes user and admin validation and authentication.
 2. Vendor
 
 > ## Administrator Functions
-1. Login with their account.
-2. View all the vendors.
-3. Create new tenders.
-4. View All the Tenders.
-5. Update Existing Tender's Details.
-6. Delete A Tender.
-7. View All the Tenders according to its status (Available/Booked).
-8. View All the Bids of a tender.
-9. Assign tender to a vendor.
-10. Deactivate a vendor.
-11. Bar particular vendors from participating in the tender bid.
-12. Logout.
+1. View all the vendors.
+2. Create new tenders.
+3. View All the Tenders.
+4. Update Existing Tender's Details.
+5. Delete A Tender.
+6. View All the Tenders according to its status (Available/Booked).
+7. View All the Bids of a tender.
+8. Assign tender to a vendor.
+9. Deactivate a vendor.
+10. Bar particular vendors from participating in the tender bid.
 
 > ## Vendor Functions
 1. Login with their account.
@@ -147,6 +145,8 @@ http://localhost:8080
 
 > => Implemented the service methods of Admin.
 
+> => Implemented the UI/Front-end for Admin Panel.
+
 #### Hoshiyar Singh Jyani
 
 > Github: [hoshiyarjyani](https://github.com/hoshiyarjyani)
@@ -154,6 +154,8 @@ http://localhost:8080
 > => Created controller of Vendor.
 
 > => Implemented the service methods of Vendor.
+
+> => Implemented the UI/Front-end for Vendors.
 
 #### Paras Jamwal
 
@@ -163,4 +165,5 @@ http://localhost:8080
 
 > => Implemented the service methods of User Log In, Bid.
 
+> => Implemented the UI/Front-end for User Login.
 
