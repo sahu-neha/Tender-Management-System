@@ -11,33 +11,32 @@ import com.masai.model.Bid;
 
 @Repository
 public interface BidRepository extends JpaRepository<Bid, Integer> {
-	
-	@Query("select b from Bid b  where b.tender=?1 AND b.vendor=?2")
-	Bid findByTenderIdAndVendorId( Integer tenderId, Integer vendorId);
 
 	List<Bid> findByVendor(Integer vendorId);
 
 	List<Bid> findByTender(Integer tenderId);
-	
-	
+
 	/**
-	* This method retrieves the bid history of a vendor by vendorId.
-	*
-	* @param vendorId The vendorId of the vendor whose bid history is to be retrieved
-	* @return A ResponseEntity object containing the list of bids made by the vendor and HTTP status code OK
-	* @Author HoshiyarJyani
-	*/
+	 * This method retrieves the bid history of a vendor by vendorId.
+	 *
+	 * @param vendorId The vendorId of the vendor whose bid history is to be
+	 *                 retrieved
+	 * @return A ResponseEntity object containing the list of bids made by the
+	 *         vendor and HTTP status code OK
+	 * @Author HoshiyarJyani
+	 */
 	@Query("SELECT v.bidList FROM Vendor v WHERE v.vendorId = :vendorId")
 	public List<Bid> findBidHistoryByVendorId(@Param("vendorId") Integer vendorId);
 
-	
 	/**
-	* This method retrieves the bid history of a Tender by TenderId.
-	*
-	* @param tenderId The tenderId of the tender whose bid history is to be retrieved
-	* @return A ResponseEntity object containing the list of bids made by the vendor and HTTP status code OK
-	* @Author HoshiyarJyani
-	*/
+	 * This method retrieves the bid history of a Tender by TenderId.
+	 *
+	 * @param tenderId The tenderId of the tender whose bid history is to be
+	 *                 retrieved
+	 * @return A ResponseEntity object containing the list of bids made by the
+	 *         vendor and HTTP status code OK
+	 * @Author HoshiyarJyani
+	 */
 	@Query("SELECT t.bidList FROM Tender t WHERE t.tenderId = :tenderId")
 	public List<Bid> findBidHistoryByTenderId(@Param("tenderId") Integer tenderId);
 
