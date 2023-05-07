@@ -87,7 +87,7 @@ public class VendorServiceImpl implements VendorService {
 	public List<Tender> viewAllTenders() throws TenderException {
 		List<Tender> allTenders = tenderRepository.findAll();
 
-		List<Tender> availableTenders = allTenders.stream().filter(tender -> "Available".equals(tender.getStatus()))
+		List<Tender> availableTenders = allTenders.stream().filter(tender -> (tender.getStatus().toString().equalsIgnoreCase("Available")))
 				.collect(Collectors.toList());
 
 		if (availableTenders.isEmpty()) {
