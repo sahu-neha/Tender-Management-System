@@ -30,5 +30,15 @@ public interface BidRepository extends JpaRepository<Bid, Integer> {
 	@Query("SELECT v.bidList FROM Vendor v WHERE v.vendorId = :vendorId")
 	public List<Bid> findBidHistoryByVendorId(@Param("vendorId") Integer vendorId);
 
+	
+	/**
+	* This method retrieves the bid history of a Tender by TenderId.
+	*
+	* @param tenderId The tenderId of the tender whose bid history is to be retrieved
+	* @return A ResponseEntity object containing the list of bids made by the vendor and HTTP status code OK
+	* @Author HoshiyarJyani
+	*/
+	@Query("SELECT t.bidList FROM Tender t WHERE t.tenderId = :tenderId")
+	public List<Bid> findBidHistoryByTenderId(@Param("tenderId") Integer tenderId);
 
 }
