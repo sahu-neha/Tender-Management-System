@@ -250,6 +250,11 @@ public class AdminServiceImpl implements AdminService {
 
 		List<Bid> bidList = bidRepository.findBidHistoryByTenderId(tenderId);
 
+//		Tender t = tenderRepository.findById(tenderId)
+//				.orElseThrow(() -> new TenderException("No tender available with tender id : " + tenderId));
+//
+//		List<Bid> bidList = t.getBidList();
+
 		if (bidList.size() == 0) {
 			throw new NotFoundException("No Bid available with tender id : " + tenderId);
 		} else {
