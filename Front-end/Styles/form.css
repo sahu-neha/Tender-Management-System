@@ -44,13 +44,13 @@
     font-size: 23px;
     font-weight: 500;
     padding: 15px;
-    /* margin-top: 20px; */
 }
 
 #form input {
     padding: 10px;
     margin-top: 20px;
     font-size: 15px;
+    width: auto;
 }
 
 input:focus {
