@@ -172,9 +172,9 @@ public class AdminController {
 
 	}
 
-	// ===== B A R - A - V E N D O R - F R O M - A - T E N D E R - B I D ===== //
+	// ===== B A N - A - V E N D O R - F R O M - A - T E N D E R - B I D ===== //
 
-	@PatchMapping("/barVendorFromBidding/{id}")
+	@PatchMapping("/banVendorFromBidding/{id}")
 	public ResponseEntity<Vendor> barVendorFromBiddingHandler(@PathVariable("id") Integer id)
 			throws VendorException, NotFoundException {
 
