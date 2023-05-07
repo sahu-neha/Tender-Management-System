@@ -32,10 +32,11 @@ public class VendorController {
 	 * @param vendor The vendor object to be added
 	 * @return A ResponseEntity object containing the saved vendor and HTTP status
 	 *         code CREATED
+	 * @throws VendorException 
 	 * @Author HoshiyarJyani
 	 */
 	@PostMapping("/vendors")
-	public ResponseEntity<Vendor> registerVendorHandler(@RequestBody Vendor vendor) {
+	public ResponseEntity<Vendor> registerVendorHandler(@RequestBody Vendor vendor) throws VendorException {
 		Vendor savedVendor = vendorService.createVendor(vendor);
 		return new ResponseEntity<>(savedVendor, HttpStatus.CREATED);
 	}

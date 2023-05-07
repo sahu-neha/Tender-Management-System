@@ -38,8 +38,12 @@ public class VendorServiceImpl implements VendorService {
 	 * @Author HoshiyarJyani
 	 */
 	@Override
-	public Vendor createVendor(Vendor vendor) {
-		return vendorRepository.save(vendor);
+	public Vendor createVendor(Vendor vendor) throws VendorException {
+		Optional<Vendor> existingVendor = vendorRepository.findByUsername(vendor.getUsername());
+		if(existingVendor.isPresent()) {
+			throw new VendorException("Vendor Already Registered with this UserName");
+		}
+		return vendorRepository.save(vendor);	
 	}
 
 	/**
