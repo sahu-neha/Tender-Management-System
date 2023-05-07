@@ -1,0 +1,88 @@
+* {
+    padding: auto;
+    margin: 0px;
+    box-sizing: border-box;
+    line-height: 110%;
+    box-sizing: border-box;
+    font-family: "Archivo";
+}
+
+#title {
+    text-align: center;
+    font-size: larger;
+    padding-bottom: 10px;
+}
+
+#home {
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    color: black;
+}
+
+#main-container {
+    margin: auto;
+    margin-top: 9%;
+    width: 60%;
+    box-shadow: rgba(197, 8, 8, 0.4) 0px 0px 0px 2px,
+        rgba(218, 8, 50, 0.65) 0px 4px 6px -1px,
+        rgba(216, 13, 20, 0.831) 0px 1px 0px inset;
+    padding: 40px 20px;
+    border-radius: 7px;
+    margin-bottom: 100px;
+}
+
+#title {
+    text-align: center;
+    font-size: larger;
+}
+
+#list {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#list button {
+    text-decoration: none;
+    font-style: inherit;
+    color: brown;
+    font-size: 25px;
+    font-weight: 600;
+    transition: font-size 0.5s;
+    background-color: transparent;
+    border: 1px solid brown;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    padding: 15px 30px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+#list button:hover {
+    color: red;
+    background-color: brown;
+    color: white;
+    transition: all ease-in-out 0.3s;
+}
+
+#list {
+    /* list-style: none; */
+    color: brown;
+    margin-top: 30px;
+    text-align: left;
+    padding-left: 290px;
+}
+
+#list a {
+    text-decoration: none;
+    font-style: inherit;
+    color: brown;
+    font-size: 25px;
+    font-weight: 600;
+    transition: font-size 0.5s;
+    padding-left: 10px;
+}
+
+#list a:hover {
+    color: red;
+}
