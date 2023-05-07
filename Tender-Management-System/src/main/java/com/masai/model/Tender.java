@@ -38,6 +38,9 @@ public class Tender {
 
 	@NotBlank(message = "Description is required")
 	private String description;
+	
+	@NotBlank(message = "Image is required")
+	private String image;
 
 	@NotNull(message = "Creation date is required")
 	private LocalDate creationDate;
