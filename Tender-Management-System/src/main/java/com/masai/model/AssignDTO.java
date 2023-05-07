@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class AssignDTO {
 	private Integer tenderId;
-	private Integer venderId;
+	private Integer vendorId;
 }

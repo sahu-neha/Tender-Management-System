@@ -126,8 +126,8 @@ public class AdminServiceImpl implements AdminService {
 
 		List<Tender> tenders = tenderRepository.findAll();
 
-		List<Tender> tenderListByStatus = tenders.stream().filter(t -> t.getStatus().equals(status))
-				.collect(Collectors.toList());
+		List<Tender> tenderListByStatus = tenders.stream().filter(t -> t.getStatus().toString().equalsIgnoreCase(status)).collect(Collectors.toList());
+				
 
 		if (tenderListByStatus.size() == 0) {
 			throw new TenderException("No Tender available with the status " + status);
@@ -213,8 +213,8 @@ public class AdminServiceImpl implements AdminService {
 		Tender t = tenderRepository.findById(ad.getTenderId())
 				.orElseThrow(() -> new TenderException("No tender available with tender id : " + ad.getTenderId()));
 
-		Vendor v = vendorRepository.findById(ad.getVenderId())
-				.orElseThrow(() -> new TenderException("No vendor available with vendor id : " + ad.getVenderId()));
+		Vendor v = vendorRepository.findById(ad.getVendorId())
+				.orElseThrow(() -> new TenderException("No vendor available with vendor id : " + ad.getVendorId()));
 
 		if (!v.getIsActive()) {
 			throw new VendorException("Vendor Account is not active");
@@ -231,7 +231,7 @@ public class AdminServiceImpl implements AdminService {
 
 		List<Bid> list = v.getBidList();
 		for (Bid s : list) {
-			if (s.getTender().getTenderId() == ad.getTenderId() && s.getVendor().getVendorId() == ad.getVenderId()) {
+			if (s.getTender().getTenderId() == ad.getTenderId() && s.getVendor().getVendorId() == ad.getVendorId()) {
 				s.setBidStatus(BidStatus.APPROVED);
 				b = s;
 			}
