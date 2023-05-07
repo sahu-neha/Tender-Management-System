@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.masai.exception.BidException;
 import com.masai.exception.NotFoundException;
 import com.masai.exception.TenderException;
 import com.masai.exception.VendorException;
@@ -109,11 +110,12 @@ public class VendorController {
 	 * @throws TenderException If the tender is not available for bid
 	 * @throws VendorException If the vendor is not found or the bid amount is less
 	 *                         than the current highest bid
+	 * @throws BidException 
 	 * @Author HoshiyarJyani
 	 */
 	@PostMapping("/tenders/{tenderId}/{vendorId}")
 	public ResponseEntity<String> placeBid(@PathVariable Integer tenderId, @PathVariable Integer vendorId,
-			@RequestBody Bid bid) throws TenderException, VendorException {
+			@RequestBody Bid bid) throws TenderException, VendorException, BidException {
 		vendorService.placeBid(tenderId, vendorId, bid);
 		return new ResponseEntity<>("Bid placed successfully", HttpStatus.CREATED);
 	}
