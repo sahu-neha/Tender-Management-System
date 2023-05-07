@@ -178,7 +178,7 @@ public class AdminController {
 	public ResponseEntity<Vendor> barVendorFromBiddingHandler(@PathVariable("id") Integer id)
 			throws VendorException, NotFoundException {
 
-		Vendor vendor = adminService.deactivateVendor(id);
+		Vendor vendor = adminService.barAVendorFromATenderBid(id);
 
 		return new ResponseEntity<>(vendor, HttpStatus.ACCEPTED);
 
