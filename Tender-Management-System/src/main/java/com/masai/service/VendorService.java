@@ -11,7 +11,7 @@ import com.masai.model.Vendor;
 public interface VendorService {
 	
 	//This Method For Add New Vendor - @Author HoshiyarJyani
-	public Vendor createVendor(Vendor vendor);
+	public Vendor createVendor(Vendor vendor) throws VendorException;
 
 	//This Method For change Password for Vendor - @Author HoshiyarJyani
 	public void updateVendorPassword(String username,String password, String newPassword) throws VendorException;

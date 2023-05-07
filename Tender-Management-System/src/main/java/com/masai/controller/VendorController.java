@@ -28,7 +28,7 @@ public class VendorController {
 	private VendorService vendorService;
 
 	@PostMapping("/vendors")
-	public ResponseEntity<Vendor> registerVendorHandler(@RequestBody Vendor vendor) {
+	public ResponseEntity<Vendor> registerVendorHandler(@RequestBody Vendor vendor) throws VendorException {
 
 		Vendor saveVendor = vendorService.createVendor(vendor);
 
