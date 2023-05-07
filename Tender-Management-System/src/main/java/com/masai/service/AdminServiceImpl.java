@@ -38,6 +38,16 @@ public class AdminServiceImpl implements AdminService {
 
 	// ========== A D D - N E W - T E N D E R ========== //
 
+	/**
+	 * This method adds a new tender to the system.
+	 *
+	 * @param tender : The tender object to be added
+	 * @return A ResponseEntity object containing the saved tender and HTTP status
+	 *         code CREATED
+	 * @throws TenderException : If tender is already created
+	 * @Author sahu-neha
+	 */
+
 	@Override
 	public Tender createTender(Tender tender) throws TenderException {
 
@@ -58,6 +68,16 @@ public class AdminServiceImpl implements AdminService {
 
 	// ========== R E M O V E - E X I S T I N G - T E N D E R ========== //
 
+	/**
+	 * This method removes any tender, found by tender ID.
+	 * 
+	 * @param id: tender id of the tender which needs to be removed
+	 * @return A ResponseEntity object containing the deleted tender and HTTP status
+	 *         code OK
+	 * @throws TenderException, NotFoundException If no tenders available
+	 * @Author sahu-neha
+	 */
+
 	@Override
 	public Tender removeTender(Integer tenderId) throws TenderException {
 
@@ -72,6 +92,17 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	// ========== U P D A T E - E X I S T I N G - T E N D E R ========== //
+
+	/**
+	 * This method updates any tender, found by tender ID.
+	 * 
+	 * @param id:    tender id of the tender which needs to be updated
+	 * @param tender t: tender object which contains the data to update
+	 * @return A ResponseEntity object containing the updated tender and HTTP status
+	 *         code ACCEPTED
+	 * @throws TenderException, NotFoundException If no tenders available
+	 * @Author sahu-neha
+	 */
 
 	@Override
 	public Tender updateTender(Tender tender, Integer id) throws TenderException {
@@ -90,6 +121,15 @@ public class AdminServiceImpl implements AdminService {
 
 	// ========== G E T - A L L - T E N D E R S ========== //
 
+	/**
+	 * This method retrieves a list of all tenders.
+	 * 
+	 * @return A ResponseEntity object containing the list of tenders and HTTP
+	 *         status code FOUND
+	 * @throws TenderException If no tender available
+	 * @Author sahu-neha
+	 */
+
 	@Override
 	public List<Tender> viewAllTenders() throws TenderException {
 
@@ -104,6 +144,16 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	// ========== G E T - T E N D E R - B Y - I D ========== //
+
+	/**
+	 * This method retrieves details of a tender found by ID.
+	 * 
+	 * @param tenderId : The tender id of the tender to be retrieved
+	 * @return A ResponseEntity object containing the saved tender and HTTP status
+	 *         code CREATED
+	 * @throws TenderException, NotFoundException If no tender available with the id
+	 * @Author sahu-neha
+	 */
 
 	@Override
 	public Tender viewTendersById(Integer tenderId) throws TenderException {
@@ -121,13 +171,24 @@ public class AdminServiceImpl implements AdminService {
 
 	// ========== G E T - T E N D E R S - B Y - S T A T U S ========== //
 
+	/**
+	 * This method retrieves a list of all tenders by its status (AVAILABLE/BOOKED).
+	 * 
+	 * @param status : status (AVAILABLE/BOOKED) for which the record of tenders is
+	 *               to be retrieved
+	 * @return A ResponseEntity object containing the list of tenders and HTTP
+	 *         status code FOUND
+	 * @throws TenderException If no tender available
+	 * @Author sahu-neha
+	 */
+
 	@Override
 	public List<Tender> viewTendersByStatus(String status) throws TenderException {
 
 		List<Tender> tenders = tenderRepository.findAll();
 
-		List<Tender> tenderListByStatus = tenders.stream().filter(t -> t.getStatus().toString().equalsIgnoreCase(status)).collect(Collectors.toList());
-				
+		List<Tender> tenderListByStatus = tenders.stream()
+				.filter(t -> t.getStatus().toString().equalsIgnoreCase(status)).collect(Collectors.toList());
 
 		if (tenderListByStatus.size() == 0) {
 			throw new TenderException("No Tender available with the status " + status);
@@ -142,6 +203,15 @@ public class AdminServiceImpl implements AdminService {
 	// ---------------------------------------------------------------------- //
 
 	// ========== G E T - A L L - V E N D O R S ========== //
+
+	/**
+	 * This method retrieves a list of all vendors.
+	 * 
+	 * @return A ResponseEntity object containing the list of vendors and HTTP
+	 *         status code FOUND
+	 * @throws VendorException, NotFoundException If no vendors available
+	 * @Author sahu-neha
+	 */
 
 	@Override
 	public List<Vendor> viewAllVendors() throws VendorException {
@@ -158,6 +228,15 @@ public class AdminServiceImpl implements AdminService {
 
 	// ========== G E T - A C T I V E - V E N D O R S ========== //
 
+	/**
+	 * This method retrieves a list of all active vendors.
+	 * 
+	 * @return A ResponseEntity object containing the list of vendors and HTTP
+	 *         status code FOUND
+	 * @throws VendorException, NotFoundException If no vendors available
+	 * @Author sahu-neha
+	 */
+
 	@Override
 	public List<Vendor> viewActiveVendors() throws VendorException {
 
@@ -173,6 +252,16 @@ public class AdminServiceImpl implements AdminService {
 
 	// ========== D E A C T I V A T E - A - V E N D O R ========== //
 
+	/**
+	 * This method deactivates any vendor, found by vendor ID.
+	 * 
+	 * @param id: vendor id of the vendor which needs to be deactivated
+	 * @return A ResponseEntity object containing the saved vendor and HTTP status
+	 *         code ACCEPTED
+	 * @throws VendorException, NotFoundException If no vendors available
+	 * @Author sahu-neha
+	 */
+
 	@Override
 	public Vendor deactivateVendor(Integer vendorId) throws VendorException, NotFoundException {
 
@@ -187,6 +276,16 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	// ===== B A R - A - V E N D O R - F R O M - A - T E N D E R - B I D ===== //
+
+	/**
+	 * This method bar any vendor from participating in bids, found by vendor ID.
+	 * 
+	 * @param id: vendor id of the vendor which needs to be barred
+	 * @return A ResponseEntity object containing the saved vendor and HTTP status
+	 *         code ACCEPTED
+	 * @throws VendorException, NotFoundException If no vendors available
+	 * @Author sahu-neha
+	 */
 
 	@Override
 	public Vendor barAVendorFromATenderBid(Integer vendorId) throws VendorException, NotFoundException {
@@ -206,6 +305,17 @@ public class AdminServiceImpl implements AdminService {
 	// ----------------------------------------------------------------------- //
 
 	// ========== A S S I G N - T E N D E R - T O - A - V E N D O R ========== //
+
+	/**
+	 * This method allows admin to assign any vendor to a particular tender.
+	 * 
+	 * @param ad : The AssignDTO object (tenderID, vendorID) to be added
+	 * @return A ResponseEntity object containing the saved Bid and HTTP status code
+	 *         ACCEPTED
+	 * @throws VendorException, NotFoundException If no vendors available
+	 * @throws TenderException, NotFoundException If no tenders available
+	 * @Author sahu-neha
+	 */
 
 	@Override
 	public Bid assignTenderToVendor(AssignDTO ad) throws VendorException, TenderException, NotFoundException {
@@ -244,6 +354,18 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	// ========== G E T - A L L - B I D S - O F - A - T E N D E R ========== //
+
+	/**
+	 * This method retrieves details of all the bids for a tender, found by ID.
+	 * 
+	 * @param tenderId : The id of the tender for which bidding list is to be
+	 *                 retrieved
+	 * @return A ResponseEntity object containing list of retrieved Bids and HTTP
+	 *         status code FOUND
+	 * @throws TenderException, NotFoundException If no tender or no bids available
+	 *                          with the id
+	 * @Author sahu-neha
+	 */
 
 	@Override
 	public List<Bid> viewAllBidsOfATender(Integer tenderId) throws NotFoundException, TenderException {
