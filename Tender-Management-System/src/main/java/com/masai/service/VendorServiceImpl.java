@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.masai.exception.BidException;
 import com.masai.exception.NotFoundException;
 import com.masai.exception.TenderException;
 import com.masai.exception.VendorException;
@@ -133,21 +134,25 @@ public class VendorServiceImpl implements VendorService {
 	 * @throws TenderException If the tender is not available for bid
 	 * @throws VendorException If the vendor is not found or the bid amount is less
 	 *                         than the current highest bid
+	 * @throws BidException 
 	 * @Author HoshiyarJyani
 	 */
 	@Override
-	public String placeBid(Integer tenderId, Integer vendorId, Bid bid) throws TenderException, VendorException {
+	public String placeBid(Integer tenderId, Integer vendorId, Bid bid) throws TenderException, VendorException, BidException {
 		Optional<Tender> optionalTender = tenderRepository.findById(tenderId);
 		if (optionalTender.isPresent()) {
 			Tender tender = optionalTender.get();
 
-//		        if (!("AVAILABLE".equals(tender.getStatus()))) {
-//		            throw new TenderException("Cannot place bid. Tender is not available.");
-//		        }
+		        if (!(tender.getStatus().toString().equalsIgnoreCase("available"))) {
+		            throw new TenderException("Cannot place bid. Tender is not available with TenderId "+tenderId);
+		        }
 
 			Optional<Vendor> optionalVendor = vendorRepository.findById(vendorId);
 			if (optionalVendor.isPresent()) {
 				Vendor vendor = optionalVendor.get();
+				
+			  List<Bid> bidList =  bidRepository.findExistingBidByTenderIdVendorId(vendorId, tenderId);
+				if(bidList.size()>0) throw new BidException("You Can't place a Bid against a same Tender. Your Bid is already Exist.");
 				bid.setTender(tender);
 				bid.setVendor(vendor);
 				tender.getBidList().add(bid);

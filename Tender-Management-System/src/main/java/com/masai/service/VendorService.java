@@ -2,6 +2,7 @@ package com.masai.service;
 
 import java.util.List;
 
+import com.masai.exception.BidException;
 import com.masai.exception.NotFoundException;
 import com.masai.exception.TenderException;
 import com.masai.exception.VendorException;
@@ -69,9 +70,10 @@ public interface VendorService {
 	 * @throws TenderException If the tender is not available for bid
 	 * @throws VendorException If the vendor is not found or the bid amount is less
 	 *                         than the current highest bid
+	 * @throws BidException 
 	 * @Author HoshiyarJyani
 	 */
-	public String placeBid(Integer tenderId, Integer vendorId, Bid bid) throws TenderException, VendorException;
+	public String placeBid(Integer tenderId, Integer vendorId, Bid bid) throws TenderException, VendorException, BidException;
 
 	/**
 	 * This method retrieves the bid history of a vendor by vendorId.
