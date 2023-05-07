@@ -17,9 +17,10 @@ public interface VendorService {
 	 * @param vendor The vendor object to be added
 	 * @return A ResponseEntity object containing the saved vendor and HTTP status
 	 *         code CREATED
+	 * @throws VendorException 
 	 * @Author HoshiyarJyani
 	 */
-	public Vendor createVendor(Vendor vendor);
+	public Vendor createVendor(Vendor vendor) throws VendorException;
 
 	/**
 	 * This method updates the password of a vendor.

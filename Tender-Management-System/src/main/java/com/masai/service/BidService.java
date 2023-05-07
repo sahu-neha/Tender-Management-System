@@ -13,7 +13,7 @@ public interface BidService {
 	
 	public Bid getBidByBidId(Integer bidId) throws Exception;
 	
-	public List<Bid> getBidsByTenderId(Integer tenderId);
+	public List<Bid> getBidsByTenderId(Integer tenderId) throws NotFoundException;
 	
 	public Bid updateBidStatus(Integer bidId, String bidStatus) throws Exception;
 }

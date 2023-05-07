@@ -24,19 +24,19 @@ public class BidController {
 	private BidService bidService;
 	
 	
-	@GetMapping("bids/{vendorId}")
+	@GetMapping("bids/vendor/{vendorId}")
 	public ResponseEntity<List<Bid>> fetchAllBidsByVendor(@PathVariable Integer vendorId) throws NotFoundException{
 		List<Bid> res = bidService.getBidHistoryByVendorId(vendorId);
 		return new ResponseEntity<List<Bid>>(res,HttpStatus.FOUND);
 	}
 	
-	@GetMapping("/bids/{Id}")
+	@GetMapping("/bids/bid/{Id}")
 	public ResponseEntity<Bid> fetchBidByBidId(@PathVariable Integer Id) throws Exception{
 		Bid res = bidService.getBidByBidId(Id);
 		return new ResponseEntity<Bid>(res,HttpStatus.FOUND);
 	}
 	
-	@GetMapping("/bids/{tenderId}")
+	@GetMapping("/bids/tender/{tenderId}")
 	public ResponseEntity<List<Bid>> fetchBidsByTenderId(@PathVariable Integer tenderId) throws Exception{
 		List<Bid> res = bidService.getBidsByTenderId(tenderId);
 		return new ResponseEntity<List<Bid>>(res,HttpStatus.FOUND);

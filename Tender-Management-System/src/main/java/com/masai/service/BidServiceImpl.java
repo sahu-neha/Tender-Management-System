@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.masai.enums.BidStatus;
 import com.masai.exception.NotFoundException;
 import com.masai.model.Bid;
+import com.masai.model.Tender;
 import com.masai.model.Vendor;
 import com.masai.repository.BidRepository;
 import com.masai.repository.TenderRepository;
@@ -72,8 +73,22 @@ public class BidServiceImpl implements BidService {
 	}
 
 	@Override
-	public List<Bid> getBidsByTenderId(Integer tenderId) {
-		return bidRepository.findByTender(tenderId);
+	public List<Bid> getBidsByTenderId(Integer tenderId) throws NotFoundException {
+		Optional<Tender> tender = tenderRepository.findById(tenderId);
+
+		if (tender.isPresent()) {
+			Tender t = tender.get();
+			List<Bid> bidList = t.getBidList();
+			if (bidList.size() == 0) {
+				throw new NotFoundException("Bid not found");
+			} else {
+				return bidList;
+			}
+		} else {
+			throw new NotFoundException("Tender not found with id " + tenderId);
+		}
+		
+
 	}
 
 	@Override
