@@ -202,8 +202,9 @@ public class AdminController {
 
 	// ========== G E T - A L L - B I D S - O F - A - T E N D E R ========== //
 
+
 	@GetMapping("/tenders/bid/{tenderId}")
-	public ResponseEntity<List<Bid>> viewAllBidsOfATenderHandler(Integer tenderId)
+	public ResponseEntity<List<Bid>> viewAllBidsOfATenderHandler(@PathVariable Integer tenderId)
 			throws NotFoundException, TenderException {
 
 		List<Bid> bids = adminService.viewAllBidsOfATender(tenderId);

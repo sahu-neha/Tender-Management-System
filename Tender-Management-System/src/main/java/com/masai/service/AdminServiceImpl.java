@@ -236,7 +236,7 @@ public class AdminServiceImpl implements AdminService {
 				b = s;
 			}
 		}
-		
+
 		tenderRepository.save(t);
 		vendorRepository.save(v);
 
@@ -248,16 +248,11 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public List<Bid> viewAllBidsOfATender(Integer tenderId) throws NotFoundException, TenderException {
 
-		Tender t = tenderRepository.findById(tenderId)
-				.orElseThrow(() -> new TenderException("No tender available with tender id : " + tenderId));
-
-		List<Bid> bids = t.getBidList();
-
-		if (bids.size() == 0) {
-			throw new NotFoundException("No Bid available");
-		} else {
-			return bids;
+		List<Bid> bidList = bidRepository.findBidHistoryByTenderId(tenderId);
+		if (bidList.size() == 0) {
+			throw new TenderException("No Bid available with tender id : " + tenderId);
 		}
+		return bidList;
 
 	}
 
