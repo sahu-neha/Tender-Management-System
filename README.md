@@ -32,9 +32,7 @@ The application also includes user and admin validation and authentication.
 9. Assign tender to a vendor.
 10. Deactivate a vendor.
 11. Bar particular vendors from participating in the tender bid.
-12. Integration of a dispute system where the vendor and administrator can dialogue in case of any dispute.
-13. Logout.
-
+12. Logout.
 
 > ## Vendor Functions
 1. Login with their account.
@@ -56,6 +54,9 @@ The application also includes user and admin validation and authentication.
 - MYSQL
 - JPQL
 - POSTMAN
+- HTML
+- CSS
+- JAVASCRIPT
 
 > ## Dependencies
 
@@ -162,8 +163,4 @@ http://localhost:8080
 
 > => Implemented the service methods of User Log In, Bid.
 
-#### Ramesh Yadav
-
-> Github: [rameshy9891](https://github.com/rameshy9891)
-//
 
