@@ -38,16 +38,16 @@ public class AdminController {
 	// ---------------------------------------------------------------------- //
 
 	// ========== A D D - N E W - T E N D E R ========== //
-	
+
 	/**
 	 * This method adds a new tender to the system.
 	 *
 	 * @param tender : The tender object to be added
 	 * @return A ResponseEntity object containing the saved tender and HTTP status
 	 *         code CREATED
+	 * @throws TenderException : If tender is already created
 	 * @Author sahu-neha
 	 */
-
 	@PostMapping("/tenders")
 	public ResponseEntity<Tender> registerTenderHandler(@Valid @RequestBody Tender tender) throws TenderException {
 
@@ -61,13 +61,12 @@ public class AdminController {
 
 	/**
 	 * This method retrieves a list of all tenders.
-	 *
+	 * 
 	 * @return A ResponseEntity object containing the list of tenders and HTTP
 	 *         status code FOUND
-	 * @throws TenderException If no tenders are available
+	 * @throws TenderException If no tender available
 	 * @Author sahu-neha
 	 */
-	
 	@GetMapping("/tenders")
 	public ResponseEntity<List<Tender>> viewAllTendersHandler() throws TenderException, NotFoundException {
 
@@ -82,6 +81,15 @@ public class AdminController {
 
 	// ========== G E T - T E N D E R - B Y - I D ========== //
 
+	/**
+	 * This method retrieves details of a tender found by ID.
+	 * 
+	 * @param tenderId : The tender id of the tender to be retrieved
+	 * @return A ResponseEntity object containing the saved tender and HTTP status
+	 *         code CREATED
+	 * @throws TenderException, NotFoundException If no tender available with the id
+	 * @Author sahu-neha
+	 */
 	@GetMapping("/tendersById/{id}")
 	public ResponseEntity<Tender> viewTendersByIdHandler(@PathVariable("id") Integer id)
 			throws TenderException, NotFoundException {
@@ -94,6 +102,16 @@ public class AdminController {
 
 	// ========== G E T - T E N D E R S - B Y - S T A T U S ========== //
 
+	/**
+	 * This method retrieves a list of all tenders by its status (AVAILABLE/BOOKED).
+	 * 
+	 * @param status : status (AVAILABLE/BOOKED) for which the record of tenders is
+	 *               to be retrieved
+	 * @return A ResponseEntity object containing the list of tenders and HTTP
+	 *         status code FOUND
+	 * @throws TenderException If no tender available
+	 * @Author sahu-neha
+	 */
 	@GetMapping("/tendersByStatus/{status}")
 	public ResponseEntity<List<Tender>> viewTendersByStatusHandler(@PathVariable("status") String status)
 			throws TenderException, NotFoundException {
@@ -106,6 +124,15 @@ public class AdminController {
 
 	// ========== R E M O V E - E X I S T I N G - T E N D E R ========== //
 
+	/**
+	 * This method removes any tender, found by tender ID.
+	 * 
+	 * @param id: tender id of the tender which needs to be removed
+	 * @return A ResponseEntity object containing the deleted tender and HTTP status
+	 *         code OK
+	 * @throws TenderException, NotFoundException If no tenders available
+	 * @Author sahu-neha
+	 */
 	@DeleteMapping("/tenders/{id}")
 	public ResponseEntity<Tender> removeTenderHandler(@PathVariable("id") Integer id)
 			throws TenderException, NotFoundException {
@@ -118,6 +145,16 @@ public class AdminController {
 
 	// ========== U P D A T E - E X I S T I N G - T E N D E R ========== //
 
+	/**
+	 * This method updates any tender, found by tender ID.
+	 * 
+	 * @param id:    tender id of the tender which needs to be updated
+	 * @param tender t: tender object which contains the data to update
+	 * @return A ResponseEntity object containing the updated tender and HTTP status
+	 *         code ACCEPTED
+	 * @throws TenderException, NotFoundException If no tenders available
+	 * @Author sahu-neha
+	 */
 	@PutMapping("/updateTender/{id}")
 	public ResponseEntity<Tender> updateTenderHandler(@PathVariable("id") Integer id, @RequestBody Tender t)
 			throws TenderException, NotFoundException {
@@ -134,6 +171,14 @@ public class AdminController {
 
 	// ========== G E T - A L L - V E N D O R S ========== //
 
+	/**
+	 * This method retrieves a list of all vendors.
+	 * 
+	 * @return A ResponseEntity object containing the list of vendors and HTTP
+	 *         status code FOUND
+	 * @throws VendorException, NotFoundException If no vendors available
+	 * @Author sahu-neha
+	 */
 	@GetMapping("/vendors")
 	public ResponseEntity<List<Vendor>> viewAllVendorsHandler() throws VendorException, NotFoundException {
 
@@ -148,6 +193,14 @@ public class AdminController {
 
 	// ========== G E T - A C T I V E - V E N D O R S ========== //
 
+	/**
+	 * This method retrieves a list of all active vendors.
+	 * 
+	 * @return A ResponseEntity object containing the list of vendors and HTTP
+	 *         status code FOUND
+	 * @throws VendorException, NotFoundException If no vendors available
+	 * @Author sahu-neha
+	 */
 	@GetMapping("/activeVendors")
 	public ResponseEntity<List<Vendor>> viewActiveVendorsHandler() throws VendorException, NotFoundException {
 
@@ -162,6 +215,15 @@ public class AdminController {
 
 	// ========== D E A C T I V A T E - A - V E N D O R ========== //
 
+	/**
+	 * This method deactivates any vendor, found by vendor ID.
+	 * 
+	 * @param id: vendor id of the vendor which needs to be deactivated
+	 * @return A ResponseEntity object containing the saved vendor and HTTP status
+	 *         code ACCEPTED
+	 * @throws VendorException, NotFoundException If no vendors available
+	 * @Author sahu-neha
+	 */
 	@PatchMapping("/deactivateVendor/{id}")
 	public ResponseEntity<Vendor> deactivateVendorHandler(@PathVariable("id") Integer id)
 			throws VendorException, NotFoundException {
@@ -174,6 +236,15 @@ public class AdminController {
 
 	// ===== B A N - A - V E N D O R - F R O M - A - T E N D E R - B I D ===== //
 
+	/**
+	 * This method bar any vendor from participating in bids, found by vendor ID.
+	 * 
+	 * @param id: vendor id of the vendor which needs to be barred
+	 * @return A ResponseEntity object containing the saved vendor and HTTP status
+	 *         code ACCEPTED
+	 * @throws VendorException, NotFoundException If no vendors available
+	 * @Author sahu-neha
+	 */
 	@PatchMapping("/banVendorFromBidding/{id}")
 	public ResponseEntity<Vendor> barVendorFromBiddingHandler(@PathVariable("id") Integer id)
 			throws VendorException, NotFoundException {
@@ -190,6 +261,16 @@ public class AdminController {
 
 	// ========== A S S I G N - T E N D E R - T O - A - V E N D O R ========== //
 
+	/**
+	 * This method allows admin to assign any vendor to a particular tender.
+	 * 
+	 * @param ad : The AssignDTO object (tenderID, vendorID) to be added
+	 * @return A ResponseEntity object containing the saved Bid and HTTP status code
+	 *         ACCEPTED
+	 * @throws VendorException, NotFoundException If no vendors available
+	 * @throws TenderException, NotFoundException If no tenders available
+	 * @Author sahu-neha
+	 */
 	@PutMapping("/bid/assign")
 	public ResponseEntity<Bid> assignTenderToVendorHandler(@RequestBody AssignDTO ad)
 			throws VendorException, TenderException, NotFoundException {
@@ -202,7 +283,17 @@ public class AdminController {
 
 	// ========== G E T - A L L - B I D S - O F - A - T E N D E R ========== //
 
-
+	/**
+	 * This method retrieves details of all the bids for a tender, found by ID.
+	 * 
+	 * @param tenderId : The id of the tender for which bidding list is to be
+	 *                 retrieved
+	 * @return A ResponseEntity object containing list of retrieved Bids and HTTP
+	 *         status code FOUND
+	 * @throws TenderException, NotFoundException If no tender or no bids available
+	 *                          with the id
+	 * @Author sahu-neha
+	 */
 	@GetMapping("/tenders/bid/{tenderId}")
 	public ResponseEntity<List<Bid>> viewAllBidsOfATenderHandler(@PathVariable Integer tenderId)
 			throws NotFoundException, TenderException {
