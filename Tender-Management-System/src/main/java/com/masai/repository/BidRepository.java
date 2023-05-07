@@ -7,10 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.masai.exception.BidException;
-import com.masai.exception.NotFoundException;
-import com.masai.exception.TenderException;
-import com.masai.exception.VendorException;
 import com.masai.model.Bid;
 
 @Repository
