@@ -39,6 +39,12 @@
     justify-content: center;
 }
 
+@media screen and (max-width: 1024px) {
+    #list {
+        flex-direction: column;
+    }
+}
+
 #list button {
     text-decoration: none;
     font-style: inherit;

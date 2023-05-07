@@ -47,10 +47,10 @@ public class Tender {
 	private LocalDate creationDate;
 
 	@Positive(message = "Duration must be a positive number")
-	private Integer durationInDays;
+	private int durationInDays;
 
 	@Positive(message = "Tender price must be a positive number")
-	private Integer tenderPrice;
+	private int tenderPrice;
 
 	@Enumerated(EnumType.STRING)
 	private TenderStatus status = TenderStatus.AVAILABLE;

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Create Tender</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+		/>
+		<link rel="stylesheet" href="/Styles/form.css" />
+	</head>
+	<body>
+		<div id="home">
+			<a href="/Html/index.html">
+				<span class="material-symbols-outlined"> home </span></a
+			>
+		</div>
+
+		<div id="main-container">
+			<div id="title"><h1>Create A New Tender</h1></div>
+
+			<div id="form">
+				<form action="">
+					<div>
+						<label for="">Title : &nbsp;</label>
+						<input
+							type="text"
+							name=""
+							id="title"
+							placeholder="Please enter title of the Tender"
+							required
+						/>
+					</div>
+					<div>
+						<label for="">Description : &nbsp;</label>
+						<input
+							type="text"
+							name=""
+							id="description"
+							placeholder="Please enter description of the Tender"
+							required
+						/>
+					</div>
+					<div>
+						<label for="">Image : &nbsp;</label>
+						<input
+							type="text"
+							name=""
+							id="image"
+							placeholder="Please enter URL of the image"
+							required
+						/>
+					</div>
+					<div>
+						<label for="">Creation Date : &nbsp;</label>
+						<input
+							type="date"
+							name=""
+							id="creationDate"
+							placeholder="Please enter creation date of the Tender"
+							required
+						/>
+					</div>
+					<div>
+						<label for="">Duration In Days : &nbsp;</label>
+						<input
+							type="number"
+							name=""
+							id="durationInDays"
+							placeholder="Please enter duration in days of the Tender"
+							required
+						/>
+					</div>
+					<div>
+						<label for="">Tender Price : &nbsp;</label>
+						<input
+							type="number"
+							name=""
+							id="tenderPrice"
+							placeholder="Please enter duration in days of the Tender"
+							required
+						/>
+					</div>
+					<div style="margin-left: 15px">
+						<input type="submit" value="Submit" />
+					</div>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
+
+<script src="/AdminMethods/createNewTender.js"></script>
