@@ -53,7 +53,7 @@ public class AdminController {
 
 		Tender createdTender = adminService.createTender(tender);
 
-		return new ResponseEntity<>(createdTender, HttpStatus.OK);
+		return new ResponseEntity<>(createdTender, HttpStatus.CREATED);
 
 	}
 

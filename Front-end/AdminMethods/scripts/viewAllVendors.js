@@ -25,11 +25,11 @@ showVendorsButton.addEventListener("click", () => {
 				row.appendChild(usernameCell);
 
 				const isActiveCell = document.createElement("td");
-				isActiveCell.textContent = vendor.isActive? "Yes" : "No";
+				isActiveCell.textContent = vendor.isActive ? "Yes" : "No";
 				row.appendChild(isActiveCell);
 
 				const isEligibleCell = document.createElement("td");
-				isEligibleCell.textContent = vendor.isEligible? "Yes" : "No";
+				isEligibleCell.textContent = vendor.isEligible ? "Yes" : "No";
 				row.appendChild(isEligibleCell);
 
 				// const tenderListCell = document.createElement("td");

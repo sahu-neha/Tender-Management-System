@@ -18,10 +18,14 @@
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 		/>
 		<link rel="stylesheet" href="/Front-end/Styles/form.css" />
+		<link
+			rel="stylesheet"
+			href="/Front-end/AdminMethods/styles/createNewTender.css"
+		/>
 	</head>
 	<body>
 		<div id="home">
-			<a href="/Front-end/Html/index.html">
+			<a href="/Front-end/Html/admin.html">
 				<span class="material-symbols-outlined"> home </span></a
 			>
 		</div>
@@ -30,13 +34,13 @@
 			<div id="title"><h1>Create A New Tender</h1></div>
 
 			<div id="form">
-				<form action="">
+				<form id="adminForm">
 					<div>
 						<label for="">Title : &nbsp;</label>
 						<input
 							type="text"
 							name=""
-							id="title"
+							id="titleTender"
 							placeholder="Please enter title of the Tender"
 							required
 						/>
@@ -95,6 +99,10 @@
 						<input type="submit" value="Submit" />
 					</div>
 				</form>
+			</div>
+
+			<div>
+				<div id="tender-data"></div>
 			</div>
 		</div>
 	</body>

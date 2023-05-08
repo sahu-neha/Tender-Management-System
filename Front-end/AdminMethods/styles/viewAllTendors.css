@@ -72,3 +72,10 @@ tr:hover {
 tbody tr {
     animation: slideIn 0.5s ease-in-out;
 }
+
+#home {
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    color: black;
+}
