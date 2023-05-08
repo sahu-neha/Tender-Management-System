@@ -181,6 +181,10 @@ public class AdminServiceImpl implements AdminService {
 
 		Vendor v1 = v.orElseThrow(() -> new VendorException("No Vendor available with Vendor ID : " + vendorId));
 
+//		if(!v1.getIsActive()) {
+//			throw new VendorException("Vendor Already Deactivated");
+//		}
+		
 		v1.setIsActive(false);
 
 		return vendorRepository.save(v1);
@@ -194,8 +198,12 @@ public class AdminServiceImpl implements AdminService {
 
 		Optional<Vendor> v = vendorRepository.findById(vendorId);
 
-		Vendor v1 = v.orElseThrow(() -> new VendorException("No Vendor available with Vendor ID : " + vendorId));
+		Vendor v1 = v.orElseThrow(() -> new NotFoundException("No Vendor available with Vendor ID : " + vendorId));
 
+//		if(!v1.getIsEligible()) {
+//			throw new VendorException("Vendor Already Banned from Bidding");
+//		}
+		
 		v1.setIsEligible(false);
 
 		return vendorRepository.save(v1);

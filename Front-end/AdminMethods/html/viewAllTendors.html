@@ -1,29 +1,49 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Tenders</title>
-    <link rel="stylesheet" href="/Front-end/AdminMethods/styles/viewAllTendors.css" />
-  </head>
-  <body>
-    <h1>Tenders</h1>
-    <button id="showTendersButton">View All Tenders</button>
-    <table id="tendersTable">
-      <thead>
-        <tr>
-          <th>Tender ID</th>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Image</th>
-          <th>Creation Date</th>
-          <th>Duration (days)</th>
-          <th>Tender Price</th>
-          <th>Assigned Vendor</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Tenders</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="/Front-end/AdminMethods/styles/viewAllTendors.css"
+		/>
+	</head>
+	<body>
+		<div id="home">
+			<a href="/Front-end/Html/admin.html">
+				<span class="material-symbols-outlined"> home </span></a
+			>
+		</div>
+		<h1>Tenders</h1>
+		<button id="showTendersButton">View All Tenders</button>
+		<table id="tendersTable">
+			<thead>
+				<tr>
+					<th>Tender ID</th>
+					<th>Title</th>
+					<th>Description</th>
+					<th>Image</th>
+					<th>Creation Date</th>
+					<th>Duration (days)</th>
+					<th>Tender Price</th>
+					<th>Assigned Vendor</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
 
-    <script src="/Front-end/AdminMethods/scripts/viewAllTenders.js"></script>
-  </body>
+		<script src="/Front-end/AdminMethods/scripts/viewAllTenders.js"></script>
+	</body>
 </html>
