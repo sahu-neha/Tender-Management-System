@@ -34,7 +34,7 @@
 
 #form {
     border: 1px dashed black;
-    padding: 10px 20px;
+    padding: 15px 20px;
     padding-bottom: 20px;
     width: 70%;
     margin: auto;
@@ -51,6 +51,22 @@
     margin-top: 20px;
     font-size: 15px;
     width: auto;
+}
+
+@media screen and (max-width: 1024px) {
+    #title {
+        font-size: medium;
+    }
+
+    #form label {
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    #form input {
+        margin-top: 15px;
+        font-size: 13px;
+    }
 }
 
 input:focus {

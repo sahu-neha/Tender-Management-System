@@ -73,11 +73,7 @@
     padding-left: 290px;
 }
 
-@media screen and (max-width: 1024px) {
-    #list {
-        padding-left: 20px;
-    }
-}
+
 
 #list a {
     text-decoration: none;
@@ -91,4 +87,18 @@
 
 #list a:hover {
     color: red;
+}
+
+@media screen and (max-width: 1024px) {
+    #list {
+        padding-left: 20px;
+    }
+
+    #title {
+        font-size: medium;
+    }
+
+    #list a {
+        font-size: 20px;
+    }
 }
