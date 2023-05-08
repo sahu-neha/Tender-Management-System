@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Create Tender</title>
+		<title>Update Tender</title>
 		<link
 			href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600&display=swap"
 			rel="stylesheet"
@@ -17,20 +17,30 @@
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 		/>
-		<link rel="stylesheet" href="/Styles/form.css" />
+		<link rel="stylesheet" href="/Front-end/Styles/form.css" />
 	</head>
 	<body>
 		<div id="home">
-			<a href="/Html/index.html">
+			<a href="/Front-end/Html/index.html">
 				<span class="material-symbols-outlined"> home </span></a
 			>
 		</div>
 
 		<div id="main-container">
-			<div id="title"><h1>Create A New Tender</h1></div>
+			<div id="title"><h1>Update Tender</h1></div>
 
 			<div id="form">
 				<form action="">
+					<div>
+						<label for="">Tender ID : &nbsp;</label>
+						<input
+							type="text"
+							name=""
+							id="tenderId"
+							placeholder="Please enter ID of the Tender"
+							required
+						/>
+					</div>
 					<div>
 						<label for="">Title : &nbsp;</label>
 						<input
@@ -58,16 +68,6 @@
 							name=""
 							id="image"
 							placeholder="Please enter URL of the image"
-							required
-						/>
-					</div>
-					<div>
-						<label for="">Creation Date : &nbsp;</label>
-						<input
-							type="date"
-							name=""
-							id="creationDate"
-							placeholder="Please enter creation date of the Tender"
 							required
 						/>
 					</div>
@@ -100,4 +100,4 @@
 	</body>
 </html>
 
-<script src="/AdminMethods/createNewTender.js"></script>
+<script src="/Front-end/AdminMethods/scripts/updateTender.js"></script>

@@ -21,7 +21,7 @@ form.addEventListener("submit", (e) => {
 });
 
 function login(obj) {
-	let url = "https://5f7c2c8400bd74001690ac5e.mockapi.io/api/v1/login";
+	let url = "http://localhost:8080/login/{username}/{password}";
 	fetch(url, {
 		method: "POST",
 		body: JSON.stringify(obj),

@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Deactivate Vendor</title>
+		<title>View Tenders</title>
 		<link
 			href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600&display=swap"
 			rel="stylesheet"
@@ -17,27 +17,28 @@
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 		/>
-		<link rel="stylesheet" href="/Styles/form.css" />
+		<link rel="stylesheet" href="/Front-end/Styles/form.css" />
 	</head>
 	<body>
 		<div id="home">
-			<a href="/Html/index.html">
+			<a href="/Front-end/Html/index.html">
 				<span class="material-symbols-outlined"> home </span></a
 			>
 		</div>
 
 		<div id="main-container">
-			<div id="title"><h1>Deactivate A Vendor</h1></div>
+			<div id="title"><h1>View All Tenders</h1></div>
 
 			<div id="form">
 				<form action="">
 					<div>
-						<label for="">Vendor ID : &nbsp;</label>
+						<label for="">Tender Status : &nbsp;</label>
 						<input
+							options="Available, Closed"
 							type="text"
 							name=""
-							id="vendorId"
-							placeholder="Please enter ID of the Vendor"
+							id="status"
+							placeholder="Please enter status of the Tender"
 							required
 						/>
 					</div>
@@ -50,4 +51,4 @@
 	</body>
 </html>
 
-<script src="/AdminMethods/deactivateVendor.js"></script>
+<script src="/Front-end/AdminMethods/scripts/viewAllTendersByStatus.js"></script>

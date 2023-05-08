@@ -17,11 +17,11 @@
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 		/>
-		<link rel="stylesheet" href="/Styles/admin.css" />
+		<link rel="stylesheet" href="/Front-end/Styles/admin.css" />
 	</head>
 	<body>
 		<div id="home">
-			<a href="index.html">
+			<a href="/Front-end/Html/index.html">
 				<span class="material-symbols-outlined"> home </span></a
 			>
 		</div>
@@ -31,51 +31,61 @@
 
 			<div id="list">
 				<li>
-					<a href="/AdminMethods/createNewTender.html">Register A New Tender</a>
+					<a href="/Front-end/AdminMethods/html/createNewTender.html"
+						>Register A New Tender</a
+					>
 				</li>
 				<br />
 				<li>
-					<a href="/AdminMethods/updateTender.html"
+					<a href="/Front-end/AdminMethods/html/updateTender.html"
 						>Update An Existing Tender</a
 					>
 				</li>
 				<br />
-				<li><a href="/AdminMethods/deleteTender.html">Delete A Tender</a></li>
-				<br />
-				<li><a href="">View All Tenders</a></li>
+				<li>
+					<a href="/Front-end/AdminMethods/html/deleteTender.html"
+						>Delete A Tender</a
+					>
+				</li>
 				<br />
 				<li>
-					<a href="/AdminMethods/viewAllTendersByStatus.html"
+					<a href="/Front-end/AdminMethods/html/viewAllTendors.html"
+						>View All Tenders</a
+					>
+				</li>
+				<br />
+				<li>
+					<a href="/Front-end/AdminMethods/html/viewAllTendersByStatus.html"
 						>View All Tenders By Status</a
 					>
 				</li>
 				<br />
-				<li><a href="">View All Vendors</a></li>
+				<li><a href="/Front-end/AdminMethods/html/viewAllVendors.html">View All Vendors</a></li>
 				<br />
 				<li>
-					<a href=""
-						>View All Active Vendors</a
+					<a href="">View All Active Vendors</a>
+				</li>
+				<br />
+				<li>
+					<a href="/Front-end/AdminMethods/html/deactivateVendor.html"
+						>Deactivate A Vendor</a
 					>
 				</li>
 				<br />
 				<li>
-					<a href="/AdminMethods/deactivateVendor.html">Deactivate A Vendor</a>
-				</li>
-				<br />
-				<li>
-					<a href="/AdminMethods/banVendorFromBid.html"
+					<a href="/Front-end/AdminMethods/html/banVendorFromBid.html"
 						>Bar A Vendor From Bidding</a
 					>
 				</li>
 				<br />
 				<li>
-					<a href="/AdminMethods/assignTenderToVendor.html"
+					<a href="/Front-end/AdminMethods/html/assignTenderToVendor.html"
 						>Assign A Tender to Vendor</a
 					>
 				</li>
 				<br />
 				<li>
-					<a href="/AdminMethods/viewAllBidsOfTender.html"
+					<a href="/Front-end/AdminMethods/html/viewAllBidsOfTender.html"
 						>View All Bids of A Tender</a
 					>
 				</li>
@@ -84,3 +94,4 @@
 		</div>
 	</body>
 </html>
+<script src="/Front-end/Script/admin.js"></script>
