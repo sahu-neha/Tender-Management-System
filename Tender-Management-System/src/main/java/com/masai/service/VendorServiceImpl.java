@@ -129,8 +129,7 @@ public class VendorServiceImpl implements VendorService {
 	 * @param tenderId The tenderId of the tender to place a bid against
 	 * @param vendorId The vendorId of the vendor placing the bid
 	 * @param bid      The Bid object containing the bid details
-	 * @return A ResponseEntity object with the message "Bid placed successfully"
-	 *         and HTTP status code CREATED
+	 * @return A ResponseEntity of Bid and HTTP status code CREATED
 	 * @throws TenderException If the tender is not available for bid
 	 * @throws VendorException If the vendor is not found or the bid amount is less
 	 *                         than the current highest bid
@@ -138,7 +137,7 @@ public class VendorServiceImpl implements VendorService {
 	 * @Author HoshiyarJyani
 	 */
 	@Override
-	public String placeBid(Integer tenderId, Integer vendorId, Bid bid) throws TenderException, VendorException, BidException {
+	public Bid placeBid(Integer tenderId, Integer vendorId, Bid bid) throws TenderException, VendorException, BidException {
 		Optional<Tender> optionalTender = tenderRepository.findById(tenderId);
 		if (optionalTender.isPresent()) {
 			Tender tender = optionalTender.get();
@@ -166,8 +165,7 @@ public class VendorServiceImpl implements VendorService {
 		} else {
 			throw new TenderException("Tender not found with ID: " + tenderId);
 		}
-		return "Bid Placed Successfully. Your bid price is " + bid.getBidAmount()
-				+ ". Please wait for final approval by Admin.";
+		return bid;
 	}
 
 	/**

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Place Bid</title>
+    <link rel="stylesheet" href="/Front-end/VendorMethods/css/placeBid.css" />
+    
+  </head>
+  <body>
+    <h1>Place Bid</h1>
+    <form id="placeBidForm">
+      <label for="tenderId">Tender ID:</label>
+      <input type="number" id="tenderId" name="tenderId" required /><br /><br />
+
+      <label for="vendorId">Vendor ID:</label>
+      <input type="number" id="vendorId" name="vendorId" required /><br /><br />
+
+      <label for="bidAmount">Bid Amount:</label>
+      <input type="number" id="bidAmount" name="bidAmount" required /><br /><br />
+
+      <label for="durationInDays">Duration in Days:</label>
+      <input type="number" id="durationInDays" name="durationInDays" required /><br /><br />
+
+      <input type="submit" value="Place Bid" />
+    </form>
+
+    <div id="result"></div>
+  </body>
+</html>
+<script src="/Front-end/VendorMethods/Script/placeBid.js"></script>

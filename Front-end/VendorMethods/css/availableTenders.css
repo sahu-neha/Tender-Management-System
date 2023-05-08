@@ -1,0 +1,73 @@
+/* Set up basic styles for the page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+    margin: 0;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  table {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  thead {
+    font-weight: bold;
+  }
+  
+  th,
+  td {
+    padding: 10px;
+  }
+  
+  /* Set up styles for the button */
+  button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  button:hover {
+    background-color: #3e8e41;
+  }
+  
+  /* Set up styles for the table rows */
+  tr {
+    background-color: #f2f2f2;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  tr:hover {
+    background-color: #ddd;
+  }
+  
+  /* Set up animations for the table */
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Apply animation to the table rows */
+  tbody tr {
+    animation: slideIn 0.5s ease-in-out;
+  }
+  
