@@ -55,3 +55,6 @@ showTendersButton.addEventListener("click", () => {
       alert("Failed to retrieve available tenders");
     });
 });
+function redirectToPlaceBid() {
+    window.location.href = "placeBid.html";
+  }

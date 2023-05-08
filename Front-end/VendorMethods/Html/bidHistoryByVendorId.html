@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/Front-end/VendorMethods/css/bidHistoryByVendorId.css">
+    <title>Bid History</title>
+  </head>
+  <body>
+    <h1>Bid History</h1>
+    <label for="vendorId">Vendor ID:</label>
+    <input type="number" id="vendorId" />
+    <button onclick="getBidHistory()">View Bid History</button>
+    <button id="placeBidButton" onclick="redirectToPlaceBid()">Place Bid</button>
+    <button id="homepage" onclick="location.href='homepage.html'">HomePage</button>
+    <table id="bidHistoryTable"></table>
+    
+  </body>
+  <script src="/Front-end/VendorMethods/Script/bidHistoryByVendorId.js"></script>
+</html>
