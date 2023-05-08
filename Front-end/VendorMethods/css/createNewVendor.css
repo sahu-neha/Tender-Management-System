@@ -49,7 +49,28 @@ body {
     margin: 0 auto;
     padding: 10px 20px;
   }
+  button {
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    margin: 10px;
+  }
   
+  button:hover {
+    background-color: #005fa3;
+    transform: translateY(-2px);
+    box-shadow: 2px 2px 4px #000000;
+  }
+  
+  button:focus {
+    outline: none;
+    transform: translateY(-1px);
+    box-shadow: 1px 1px 2px #000000;
+  }
   #vendor-data {
     border-collapse: collapse;
     margin-top: 20px;
@@ -75,4 +96,56 @@ body {
   #vendor-data tr:hover {
     background-color: #ddd;
   }
-  
+  /* CSS for table with received data */
+.table-with-data {
+  border-collapse: collapse;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.table-with-data th,
+.table-with-data td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.table-with-data th {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.table-with-data tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.table-with-data tr:hover {
+  background-color: #ddd;
+}
+
+/* CSS for default table without data */
+#tendersTable {
+  border-collapse: collapse;
+  margin-top: 20px;
+  width: 100%;
+}
+
+#tendersTable th,
+#tendersTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+#tendersTable th {
+  background-color: #007bff;
+  color: #fff;
+}
+
+#tendersTable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#tendersTable tr:hover {
+  background-color: #ddd;
+}

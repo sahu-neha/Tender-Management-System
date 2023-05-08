@@ -6,7 +6,6 @@ const vendorDiv = document.getElementById("vendor-data");
 const displayVendorData = (vendor) => {
   // Create a table to display the vendor data
   const table = document.createElement("table");
-
   // Create table rows and cells for each vendor property
   const vendorIdRow = document.createElement("tr");
   const vendorIdLabel = document.createElement("td");
@@ -55,8 +54,28 @@ const displayVendorData = (vendor) => {
   table.appendChild(isActiveRow);
   table.appendChild(isEligibleRow);
 
-  // Append the table to the vendor div
+  // Create a button element that redirects to "homepage.html"
+  const homeButton = document.createElement("button");
+  homeButton.textContent = "View Vendor Portal";
+  homeButton.addEventListener("click", () => {
+    window.location.href = "homepage.html";
+  });
+
+  // Append the table and button to the vendor div
   vendorDiv.appendChild(table);
+  vendorDiv.appendChild(homeButton);
+
+  // Return the table element
+  return table;
+};
+
+
+
+const clearVendorData = () => {
+  // Remove all child nodes from the vendor div
+  while (vendorDiv.firstChild) {
+    vendorDiv.removeChild(vendorDiv.firstChild);
+  }
 };
 
 loginForm.addEventListener("submit", async (event) => {
@@ -79,6 +98,7 @@ loginForm.addEventListener("submit", async (event) => {
     }
 
     const vendor = await response.json();
+    clearVendorData(); // Clear the vendor div before adding the new record
     displayVendorData(vendor);
   } catch (error) {
     alert(error.message);

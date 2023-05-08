@@ -1,0 +1,80 @@
+/* Add some styles to the input field */
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease-in-out;
+  }
+  input[type="text"]:focus {
+    outline: none;
+    border-color: #0077cc;
+  }
+  
+  /* Add some styles to the button */
+  button {
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  }
+  button:hover {
+    background-color: #005fa3;
+    transform: scale(1.05);
+  }
+  
+  /* Add some styles to the table */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    animation: tableFadeIn 0.5s ease-in-out forwards;
+  }
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  th {
+    background-color: #0077cc;
+    color: white;
+  }
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  /* Add some styles to the image */
+  img {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.2s ease-in-out;
+  }
+  img:hover {
+    transform: scale(1.1);
+  }
+  #placeBidButton {
+    background-color: #0077cc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  #placeBidButton:hover {
+    background-color: #005fa3;
+  }
+  /* Add keyframe animation for table */
+  @keyframes tableFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
