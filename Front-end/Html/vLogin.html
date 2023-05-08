@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+  </head>
+  <body>
+    <h1>Login Form</h1>
+    <form>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username"><br>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password"><br>
+
+      <button type="button" onclick="login()">Submit</button>
+    </form>
+
+    <script>
+      function login() {
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+        const url = `http://localhost:8080/login/${username}/${password}`;
+
+        fetch(url, {
+          method: "POST",
+        })
+          .then((response) => response.text())
+          .then((result) => {
+            alert(result);
+          })
+          .catch((error) => {
+            alert(error);
+          });
+      }
+    </script>
+  </body>
+</html>
