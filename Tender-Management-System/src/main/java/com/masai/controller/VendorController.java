@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +23,7 @@ import com.masai.model.Vendor;
 import com.masai.service.VendorService;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class VendorController {
 
 	@Autowired
@@ -105,19 +107,19 @@ public class VendorController {
 	 * @param tenderId The tenderId of the tender to place a bid against
 	 * @param vendorId The vendorId of the vendor placing the bid
 	 * @param bid      The Bid object containing the bid details
-	 * @return A ResponseEntity object with the message "Bid placed successfully"
-	 *         and HTTP status code CREATED
+	 * @return A ResponseEntity Bid and HTTP status code CREATED
 	 * @throws TenderException If the tender is not available for bid
 	 * @throws VendorException If the vendor is not found or the bid amount is less
 	 *                         than the current highest bid
 	 * @throws BidException 
 	 * @Author HoshiyarJyani
 	 */
+	
 	@PostMapping("/tenders/{tenderId}/{vendorId}")
-	public ResponseEntity<String> placeBid(@PathVariable Integer tenderId, @PathVariable Integer vendorId,
+	public ResponseEntity<Bid> placeBid(@PathVariable Integer tenderId, @PathVariable Integer vendorId,
 			@RequestBody Bid bid) throws TenderException, VendorException, BidException {
-		vendorService.placeBid(tenderId, vendorId, bid);
-		return new ResponseEntity<>("Bid placed successfully", HttpStatus.CREATED);
+		Bid placedBid = vendorService.placeBid(tenderId, vendorId, bid);
+		return new ResponseEntity<>(placedBid, HttpStatus.CREATED);
 	}
 
 	/**

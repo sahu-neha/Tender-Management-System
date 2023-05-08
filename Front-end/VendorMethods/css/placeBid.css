@@ -1,0 +1,105 @@
+/* Overall styling */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+  }
+  
+  h1 {
+    font-size: 36px;
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  label {
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input[type="number"] {
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+  }
+  
+  input[type="submit"] {
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: #008080;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #1f34cf;
+  }
+  
+  #result {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+  }
+  
+  #result.success {
+    border: 2px solid #00b300;
+    color: #00b300;
+  }
+  
+  #result.error {
+    border: 2px solid #ff0000;
+    color: #ff0000;
+  }
+  
+  /* Media queries */
+  
+  @media only screen and (max-width: 600px) {
+    form {
+      padding: 10px;
+    }
+    
+    label {
+      font-size: 16px;
+    }
+    
+    input[type="number"] {
+      font-size: 14px;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+    
+    input[type="submit"] {
+      font-size: 14px;
+      padding: 8px;
+    }
+    
+    #result {
+      max-width: 400px;
+    }
+  }
+  
