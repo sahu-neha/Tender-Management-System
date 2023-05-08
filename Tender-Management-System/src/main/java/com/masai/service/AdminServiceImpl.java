@@ -82,6 +82,7 @@ public class AdminServiceImpl implements AdminService {
 
 		t1.setTitle(tender.getTitle());
 		t1.setDescription(tender.getDescription());
+		t1.setImage(tender.getImage());
 		t1.setTenderPrice(tender.getTenderPrice());
 		t1.setDurationInDays(tender.getDurationInDays());
 
