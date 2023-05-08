@@ -44,7 +44,7 @@ public class AdminController {
 	 *
 	 * @param tender : The tender object to be added
 	 * @return A ResponseEntity object containing the saved tender and HTTP status
-	 *         code CREATED
+	 *         code OK
 	 * @throws TenderException : If tender is already created
 	 * @Author sahu-neha
 	 */
@@ -53,7 +53,7 @@ public class AdminController {
 
 		Tender createdTender = adminService.createTender(tender);
 
-		return new ResponseEntity<>(createdTender, HttpStatus.CREATED);
+		return new ResponseEntity<>(createdTender, HttpStatus.OK);
 
 	}
 
@@ -63,7 +63,7 @@ public class AdminController {
 	 * This method retrieves a list of all tenders.
 	 * 
 	 * @return A ResponseEntity object containing the list of tenders and HTTP
-	 *         status code FOUND
+	 *         status code OK
 	 * @throws TenderException If no tender available
 	 * @Author sahu-neha
 	 */
@@ -75,7 +75,7 @@ public class AdminController {
 		if (tenders.size() == 0)
 			throw new TenderException("No Tender Found");
 
-		return new ResponseEntity<>(tenders, HttpStatus.FOUND);
+		return new ResponseEntity<>(tenders, HttpStatus.OK);
 
 	}
 
@@ -96,7 +96,7 @@ public class AdminController {
 
 		Tender tender = adminService.viewTendersById(id);
 
-		return new ResponseEntity<>(tender, HttpStatus.FOUND);
+		return new ResponseEntity<>(tender, HttpStatus.OK);
 
 	}
 
@@ -108,7 +108,7 @@ public class AdminController {
 	 * @param status : status (AVAILABLE/BOOKED) for which the record of tenders is
 	 *               to be retrieved
 	 * @return A ResponseEntity object containing the list of tenders and HTTP
-	 *         status code FOUND
+	 *         status code OK
 	 * @throws TenderException If no tender available
 	 * @Author sahu-neha
 	 */
@@ -118,7 +118,7 @@ public class AdminController {
 
 		List<Tender> tenders = adminService.viewTendersByStatus(status);
 
-		return new ResponseEntity<>(tenders, HttpStatus.FOUND);
+		return new ResponseEntity<>(tenders, HttpStatus.OK);
 
 	}
 
@@ -151,7 +151,7 @@ public class AdminController {
 	 * @param id:    tender id of the tender which needs to be updated
 	 * @param tender t: tender object which contains the data to update
 	 * @return A ResponseEntity object containing the updated tender and HTTP status
-	 *         code ACCEPTED
+	 *         code OK
 	 * @throws TenderException, NotFoundException If no tenders available
 	 * @Author sahu-neha
 	 */
@@ -161,7 +161,7 @@ public class AdminController {
 
 		Tender tender = adminService.updateTender(t, id);
 
-		return new ResponseEntity<>(tender, HttpStatus.ACCEPTED);
+		return new ResponseEntity<>(tender, HttpStatus.OK);
 
 	}
 
@@ -175,7 +175,7 @@ public class AdminController {
 	 * This method retrieves a list of all vendors.
 	 * 
 	 * @return A ResponseEntity object containing the list of vendors and HTTP
-	 *         status code FOUND
+	 *         status code OK
 	 * @throws VendorException, NotFoundException If no vendors available
 	 * @Author sahu-neha
 	 */
@@ -187,7 +187,7 @@ public class AdminController {
 		if (vendors.size() == 0)
 			throw new VendorException("No Vendor Found");
 
-		return new ResponseEntity<>(vendors, HttpStatus.FOUND);
+		return new ResponseEntity<>(vendors, HttpStatus.OK);
 
 	}
 
@@ -197,7 +197,7 @@ public class AdminController {
 	 * This method retrieves a list of all active vendors.
 	 * 
 	 * @return A ResponseEntity object containing the list of vendors and HTTP
-	 *         status code FOUND
+	 *         status code OK
 	 * @throws VendorException, NotFoundException If no vendors available
 	 * @Author sahu-neha
 	 */
@@ -209,7 +209,7 @@ public class AdminController {
 		if (vendors.size() == 0)
 			throw new VendorException("No Vendor Found");
 
-		return new ResponseEntity<>(vendors, HttpStatus.FOUND);
+		return new ResponseEntity<>(vendors, HttpStatus.OK);
 
 	}
 
@@ -220,7 +220,7 @@ public class AdminController {
 	 * 
 	 * @param id: vendor id of the vendor which needs to be deactivated
 	 * @return A ResponseEntity object containing the saved vendor and HTTP status
-	 *         code ACCEPTED
+	 *         code OK
 	 * @throws VendorException, NotFoundException If no vendors available
 	 * @Author sahu-neha
 	 */
@@ -230,7 +230,7 @@ public class AdminController {
 
 		Vendor vendor = adminService.deactivateVendor(id);
 
-		return new ResponseEntity<>(vendor, HttpStatus.ACCEPTED);
+		return new ResponseEntity<>(vendor, HttpStatus.OK);
 
 	}
 
@@ -241,7 +241,7 @@ public class AdminController {
 	 * 
 	 * @param id: vendor id of the vendor which needs to be barred
 	 * @return A ResponseEntity object containing the saved vendor and HTTP status
-	 *         code ACCEPTED
+	 *         code OK
 	 * @throws VendorException, NotFoundException If no vendors available
 	 * @Author sahu-neha
 	 */
@@ -251,7 +251,7 @@ public class AdminController {
 
 		Vendor vendor = adminService.barAVendorFromATenderBid(id);
 
-		return new ResponseEntity<>(vendor, HttpStatus.ACCEPTED);
+		return new ResponseEntity<>(vendor, HttpStatus.OK);
 
 	}
 
@@ -266,7 +266,7 @@ public class AdminController {
 	 * 
 	 * @param ad : The AssignDTO object (tenderID, vendorID) to be added
 	 * @return A ResponseEntity object containing the saved Bid and HTTP status code
-	 *         ACCEPTED
+	 *         OK
 	 * @throws VendorException, NotFoundException If no vendors available
 	 * @throws TenderException, NotFoundException If no tenders available
 	 * @Author sahu-neha
@@ -277,7 +277,7 @@ public class AdminController {
 
 		Bid bid = adminService.assignTenderToVendor(ad);
 
-		return new ResponseEntity<>(bid, HttpStatus.ACCEPTED);
+		return new ResponseEntity<>(bid, HttpStatus.OK);
 
 	}
 
@@ -289,7 +289,7 @@ public class AdminController {
 	 * @param tenderId : The id of the tender for which bidding list is to be
 	 *                 retrieved
 	 * @return A ResponseEntity object containing list of retrieved Bids and HTTP
-	 *         status code FOUND
+	 *         status code OK
 	 * @throws TenderException, NotFoundException If no tender or no bids available
 	 *                          with the id
 	 * @Author sahu-neha
@@ -300,7 +300,7 @@ public class AdminController {
 
 		List<Bid> bids = adminService.viewAllBidsOfATender(tenderId);
 
-		return new ResponseEntity<>(bids, HttpStatus.FOUND);
+		return new ResponseEntity<>(bids, HttpStatus.OK);
 
 	}
 

@@ -18,9 +18,9 @@
     margin: auto;
     margin-top: 9%;
     width: 60%;
-    box-shadow: rgba(197, 8, 8, 0.4) 0px 0px 0px 2px,
-        rgba(218, 8, 50, 0.65) 0px 4px 6px -1px,
-        rgba(216, 13, 20, 0.831) 0px 1px 0px inset;
+    box-shadow: #007bff 0px 0px 0px 2px,
+        #5ca6f6 0px 4px 6px -1px,
+        #bfdaf6 0px 1px 0px inset;
     padding: 40px 20px;
     border-radius: 7px;
     margin-bottom: 100px;

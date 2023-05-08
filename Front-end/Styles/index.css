@@ -18,9 +18,9 @@
     margin: auto;
     margin-top: 9%;
     width: 60%;
-    box-shadow: rgba(197, 8, 8, 0.4) 0px 0px 0px 2px,
-        rgba(218, 8, 50, 0.65) 0px 4px 6px -1px,
-        rgba(216, 13, 20, 0.831) 0px 1px 0px inset;
+    box-shadow: #007bff 0px 0px 0px 2px,
+        #5ca6f6 0px 4px 6px -1px,
+        #bfdaf6 0px 1px 0px inset;
     padding: 40px 20px;
     border-radius: 7px;
     margin-bottom: 100px;
@@ -48,12 +48,12 @@
 #list button {
     text-decoration: none;
     font-style: inherit;
-    color: brown;
+    color: #007bff;
     font-size: 25px;
     font-weight: 600;
     transition: font-size 0.5s;
     background-color: transparent;
-    border: 1px solid brown;
+    border: 1px solid #007bff;
     border-radius: 5px;
     cursor: pointer;
     outline: none;
@@ -62,8 +62,8 @@
 }
 
 #list button:hover {
-    color: red;
-    background-color: brown;
+    color: #5ca6f6;
+    background-color: #007bff;
     color: white;
     transition: all ease-in-out 0.3s;
 }
@@ -71,7 +71,7 @@
 #list a {
     text-decoration: none;
     font-style: inherit;
-    color: brown;
+    color: #007bff;
     font-size: 25px;
     font-weight: 600;
     transition: font-size 0.5s;
@@ -79,5 +79,5 @@
 
 #list a:hover {
     font-size: 26.5px;
-    color: red;
+    color: #5ca6f6;
 }

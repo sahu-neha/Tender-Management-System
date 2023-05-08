@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Ban Vendor</title>
+		<title>Assign Tender to Vendor</title>
 		<link
 			href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600&display=swap"
 			rel="stylesheet"
@@ -17,20 +17,30 @@
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 		/>
-		<link rel="stylesheet" href="/Styles/form.css" />
+		<link rel="stylesheet" href="/Front-end/Styles/form.css" />
 	</head>
 	<body>
 		<div id="home">
-			<a href="/Html/index.html">
+			<a href="/Front-end/Html/index.html">
 				<span class="material-symbols-outlined"> home </span></a
 			>
 		</div>
 
 		<div id="main-container">
-			<div id="title"><h1>Ban A Vendor From Bidding</h1></div>
+			<div id="title"><h1>Assign A Tender to Vendor</h1></div>
 
 			<div id="form">
 				<form action="">
+					<div>
+						<label for="">Tender ID : &nbsp;</label>
+						<input
+							type="text"
+							name=""
+							id="tenderId"
+							placeholder="Please enter ID of the Tender"
+							required
+						/>
+					</div>
 					<div>
 						<label for="">Vendor ID : &nbsp;</label>
 						<input
@@ -50,4 +60,4 @@
 	</body>
 </html>
 
-<script src="/AdminMethods/banVendorFromBid.js"></script>
+<script src="/Front-end/AdminMethods/scripts/assignTenderToVendor.js"></script>
