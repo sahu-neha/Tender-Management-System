@@ -53,6 +53,17 @@
     width: auto;
 }
 
+#form input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
 @media screen and (max-width: 1024px) {
     #title {
         font-size: medium;
@@ -84,6 +95,7 @@ button[type="button"] {
     margin-top: 20px;
 }
 
-button[type="button"]:hover {
-    background-color: #5ca6f6;
+button[type="button"]:hover,
+#form input[type="submit"] {
+    background-color: #0665cb;
 }

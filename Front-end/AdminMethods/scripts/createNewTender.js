@@ -132,14 +132,20 @@ adminForm.addEventListener("submit", async (event) => {
 
 		console.log(response);
 
-		if (!response.ok) {
-			throw new Error("Failed to create tender");
-		}
-
 		const tender = await response.json();
+		swal({
+			title: "",
+			text: "Tender created successfully",
+			icon: "success",
+		});
 		displayTenderData(tender);
 	} catch (error) {
-		alert(error.message);
+		// alert(error.message);
+		swal({
+			title: "",
+			text: "Tender creation failed",
+			icon: "error",
+		});
 	}
 
 	adminForm.reset();

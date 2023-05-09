@@ -8,7 +8,12 @@ function deactivate() {
 	})
 		.then((response) => response.text())
 		.then((result) => {
-			alert("Vendor deactivated.");
+			// alert("Vendor deactivated.");
+			swal({
+				title: "",
+				text: "Vendor deactivated!",
+				icon: "success",
+			  });
 		})
 		.catch((error) => {
 			alert(error);

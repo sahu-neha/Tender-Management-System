@@ -1,6 +1,13 @@
 function viewBids() {
 	const tenderId = document.getElementById("tenderId").value;
 
+	if (tenderId == "") {
+		// alert("Please enter a tender ID");
+		swal("Please enter a tender ID");
+
+		return;
+	}
+
 	const url = `http://localhost:8080/tenders/bid/${tenderId}`;
 
 	fetch(url, {
@@ -8,70 +15,93 @@ function viewBids() {
 	})
 		.then((response) => response.text())
 		.then((result) => {
-			alert(result);
-			// const bids = JSON.parse(result);
-			// console.log(bids);
-			// const table = document.getElementById("bidsTable");
-			// table.innerHTML = "";
-			// const header = document.createElement("tr");
+			// alert(result);
+			const bids = JSON.parse(result);
+			console.log(bids);
+			const table = document.getElementById("bid-list");
+			table.innerHTML = "";
+			const header = document.createElement("tr");
 
-			// const bidIdHeader = document.createElement("th");
-			// bidIdHeader.textContent = "Bid ID";
-			// header.appendChild(bidIdHeader);
+			const bidIdHeader = document.createElement("th");
+			bidIdHeader.textContent = "Bid ID";
+			header.appendChild(bidIdHeader);
 
-			// const vendorIdHeader = document.createElement("th");
-			// vendorIdHeader.textContent = "Vendor ID";
-			// header.appendChild(vendorIdHeader);
+			const tenderIdHeader = document.createElement("th");
+			tenderIdHeader.textContent = "Tender ID";
+			header.appendChild(tenderIdHeader);
 
-			// const vendorNameHeader = document.createElement("th");
-			// vendorNameHeader.textContent = "Vendor Name";
-			// header.appendChild(vendorNameHeader);
+			const tenderTitleHeader = document.createElement("th");
+			tenderTitleHeader.textContent = "Tender Title";
+			header.appendChild(tenderTitleHeader);
 
-			// const bidPriceHeader = document.createElement("th");
-			// bidPriceHeader.textContent = "Bid Price";
-			// header.appendChild(bidPriceHeader);
+			const vendorIdHeader = document.createElement("th");
+			vendorIdHeader.textContent = "Vendor ID";
+			header.appendChild(vendorIdHeader);
 
-			// const bidDateHeader = document.createElement("th");
-			// bidDateHeader.textContent = "Bid Date";
-			// header.appendChild(bidDateHeader);
+			const vendorNameHeader = document.createElement("th");
+			vendorNameHeader.textContent = "Vendor Name";
+			header.appendChild(vendorNameHeader);
 
-			// const statusHeader = document.createElement("th");
-			// statusHeader.textContent = "Status";
-			// header.appendChild(statusHeader);
+			const bidPriceHeader = document.createElement("th");
+			bidPriceHeader.textContent = "Bid Price";
+			header.appendChild(bidPriceHeader);
 
-			// table.appendChild(header);
+			const bidDateHeader = document.createElement("th");
+			bidDateHeader.textContent = "Duration in Days";
+			header.appendChild(bidDateHeader);
 
-			// bids.forEach((bid) => {
-			// 	const row = document.createElement("tr");
+			const statusHeader = document.createElement("th");
+			statusHeader.textContent = "Status";
+			header.appendChild(statusHeader);
 
-			// 	const bidId = document.createElement("td");
-			// 	bidId.textContent = bid.bidId;
-			// 	row.appendChild(bidId);
+			table.appendChild(header);
 
-			// 	const vendorId = document.createElement("td");
-			// 	vendorId.textContent = bid.vendorId;
-			// 	row.appendChild(vendorId);
+			if (bids.size == 0) {
+				// alert("No bids found for the given tender ID");
+				swal("No bids found for the given tender ID");
+				return;
+			}
 
-			// 	const vendorName = document.createElement("td");
-			// 	vendorName.textContent = bid.vendorName;
-			// 	row.appendChild(vendorName);
+			bids.forEach((bid) => {
+				const row = document.createElement("tr");
 
-			// 	const bidPrice = document.createElement("td");
-			// 	bidPrice.textContent = bid.bidPrice;
-			// 	row.appendChild(bidPrice);
+				const bidId = document.createElement("td");
+				bidId.textContent = bid.id;
+				row.appendChild(bidId);
 
-			// 	const bidDate = document.createElement("td");
-			// 	bidDate.textContent = bid.bidDate;
-			// 	row.appendChild(bidDate);
+				const tenderId = document.createElement("td");
+				tenderId.textContent = bid.tender.tenderId;
+				row.appendChild(tenderId);
 
-			// 	const status = document.createElement("td");
-			// 	status.textContent = bid.status;
-			// 	row.appendChild(status);
+				const tenderTitle = document.createElement("td");
+				tenderTitle.textContent = bid.tender.title;
+				row.appendChild(tenderTitle);
 
-			// 	table.appendChild(row);
-			// });
+				const vendorId = document.createElement("td");
+				vendorId.textContent = bid.vendor.vendorId;
+				row.appendChild(vendorId);
+
+				const vendorName = document.createElement("td");
+				vendorName.textContent = bid.vendor.username;
+				row.appendChild(vendorName);
+
+				const bidPrice = document.createElement("td");
+				bidPrice.textContent = bid.bidAmount;
+				row.appendChild(bidPrice);
+
+				const bidDate = document.createElement("td");
+				bidDate.textContent = bid.durationInDays;
+				row.appendChild(bidDate);
+
+				const status = document.createElement("td");
+				status.textContent = bid.bidStatus;
+				row.appendChild(status);
+
+				table.appendChild(row);
+			});
 		})
 		.catch((error) => {
-			alert(error);
+			swal("No bids found for the given tender ID!");
+			// alert("No bids found for the given tender ID");
 		});
 }
