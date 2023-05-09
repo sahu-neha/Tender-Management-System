@@ -2,6 +2,16 @@ function assign() {
 	const tenderId = document.getElementById("tenderId").value;
 	const vendorId = document.getElementById("vendorId").value;
 
+	if (vendorId == "" || tenderId == "") {
+		// alert("Please fill in all fields");
+		swal({
+			title: "",
+			text: "Please fill in all fields",
+			icon: "warning",
+		});
+		return;
+	}
+
 	const url = `http://localhost:8080/bid/assign`;
 
 	fetch(url, {
