@@ -3,8 +3,11 @@ function viewBids() {
 
 	if (tenderId == "") {
 		// alert("Please enter a tender ID");
-		swal("Please enter a tender ID");
-
+		swal({
+			title: "",
+			text: "Please enter a tender ID",
+			icon: "warning",
+		});
 		return;
 	}
 
@@ -16,6 +19,12 @@ function viewBids() {
 		.then((response) => response.text())
 		.then((result) => {
 			// alert(result);
+			swal({
+				title: "",
+				text: "Bids retrieved successfully!",
+				icon: "success",
+			});
+
 			const bids = JSON.parse(result);
 			console.log(bids);
 			const table = document.getElementById("bid-list");
@@ -58,7 +67,11 @@ function viewBids() {
 
 			if (bids.size == 0) {
 				// alert("No bids found for the given tender ID");
-				swal("No bids found for the given tender ID");
+				swal({
+					title: "",
+					text: "No bids found for the given tender ID",
+					icon: "error",
+				});
 				return;
 			}
 
@@ -101,7 +114,11 @@ function viewBids() {
 			});
 		})
 		.catch((error) => {
-			swal("No bids found for the given tender ID!");
+			swal({
+				title: "",
+				text: "No bids found for the given tender ID",
+				icon: "error",
+			});
 			// alert("No bids found for the given tender ID");
 		});
 }

@@ -7,10 +7,22 @@ showVendorsButton.addEventListener("click", () => {
 			if (response.ok) {
 				return response.json();
 			} else {
-				throw new Error("Failed to retrieve vendors");
+				// throw new Error("Failed to retrieve vendors");
+				swal({
+					title: "",
+					text: "Failed to retrieve vendors",
+					icon: "error",
+				});
+				return;
 			}
 		})
 		.then((vendors) => {
+			swal({
+				title: "",
+				text: "Vendors retrieved successfully!",
+				icon: "success",
+			});
+
 			vendorsTable.innerHTML = "";
 
 			vendors.forEach((vendor) => {
@@ -46,6 +58,11 @@ showVendorsButton.addEventListener("click", () => {
 		})
 		.catch((error) => {
 			console.error(error);
-			alert("Failed to retrieve vendors");
+			// alert("Failed to retrieve vendors");
+			swal({
+				title: "",
+				text: "Failed to retrieve vendors",
+				icon: "error",
+			});
 		});
 });

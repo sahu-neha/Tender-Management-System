@@ -14,6 +14,12 @@ const tenderPrice = document.getElementById("tenderPrice");
 const tenderDiv = document.getElementById("tender-data");
 
 const displayTenderData = (tender) => {
+	swal({
+		title: "",
+		text: "Tender created successfully!",
+		icon: "success",
+	});
+
 	// Create a table to display the tender data
 	const table = document.createElement("table");
 

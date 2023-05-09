@@ -7,10 +7,22 @@ showTendersButton.addEventListener("click", () => {
 			if (response.ok) {
 				return response.json();
 			} else {
-				throw new Error("Failed to retrieve tenders");
+				// throw new Error("Failed to retrieve tenders");
+				swal({
+					title: "",
+					text: "Failed to retrieve tenders",
+					icon: "error",
+				});
+				return;
 			}
 		})
 		.then((tenders) => {
+			swal({
+				title: "",
+				text: "Tenders retrieved successfully!",
+				icon: "success",
+			});
+
 			tendersTable.innerHTML = "";
 
 			tenders.forEach((tender) => {
@@ -58,6 +70,11 @@ showTendersButton.addEventListener("click", () => {
 		})
 		.catch((error) => {
 			console.error(error);
-			alert("Failed to retrieve tenders");
+			// alert("Failed to retrieve tenders");
+			swal({
+				title: "",
+				text: "Failed to retrieve tenders",
+				icon: "error",
+			});
 		});
 });
