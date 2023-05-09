@@ -6,16 +6,32 @@ function assign() {
 
 	fetch(url, {
 		method: "PUT",
+		headers: {
+			"Content-Type": "application/json",
+			Accept: "application/json",
+		},
 		body: JSON.stringify({
 			tenderId: tenderId,
-			vendorId: vendorId
-		})
+			vendorId: vendorId,
+		}),
 	})
-		.then((response) => response.text())
+		.then((response) => {
+			return response.text();
+		})
 		.then((result) => {
-			alert(result);
+			// alert("Tender assigned to vendor.");
+			swal({
+				title: "",
+				text: "Tender assigned to vendor!",
+				icon: "success",
+			});
 		})
 		.catch((error) => {
-			alert(error);
+			// alert(error);
+			swal({
+				title: "",
+				text: "Error!",
+				icon: "error",
+			});
 		});
 }

@@ -18,10 +18,15 @@
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 		/>
 		<link rel="stylesheet" href="/Front-end/Styles/form.css" />
+		<link
+			rel="stylesheet"
+			href="/Front-end/AdminMethods/styles/viewBidListOfTender.css"
+		/>
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	</head>
 	<body>
 		<div id="home">
-			<a href="/Front-end/Html/index.html">
+			<a href="/Front-end/Html/admin.html">
 				<span class="material-symbols-outlined"> home </span></a
 			>
 		</div>
@@ -30,7 +35,7 @@
 			<div id="title"><h1>View All Bids of a Tender</h1></div>
 
 			<div id="form">
-				<form action="">
+				<form id="adminForm">
 					<div>
 						<label for="">Tender ID : &nbsp;</label>
 						<input
@@ -46,6 +51,10 @@
 						<button type="button" onclick="viewBids()">Submit</button>
 					</div>
 				</form>
+			</div>
+
+			<div>
+				<div id="bid-list"></div>
 			</div>
 		</div>
 	</body>
