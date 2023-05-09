@@ -26,33 +26,35 @@ public class LoginServiceImpl implements LoginService {
 	private VendorRepository vendorRepository;
 
 	@Override
-	public String LogIntoAccount(String username,String password) throws LoginException {
-		System.out.println(username +" "+ password);
+	public Vendor LogIntoAccount(String username, String password) throws Exception {
+		System.out.println(username + " " + password);
 		Optional<Vendor> existingVendor = vendorRepository.findByUsername(username);
 		if (!existingVendor.isPresent()) {
-			throw new LoginException("Please Enter valid UserName");
+		throw new Exception("Please Enter valid UserName");
 		}
-		Optional<CurrentVendorSession> validVendorSession = sessionRepository.findById(existingVendor.get().getVendorId());
-		if (validVendorSession.isPresent()) {
-			throw new LoginException("Vendor Already logged in with this username");
-		}
+		// Optional<CurrentVendorSession> validVendorSession = sessionRepository
+		// .findById(existingVendor.get().getVendorId());
+		// if (validVendorSession.isPresent()) {
+		// throw new LoginException("Vendor Already logged in with this username");
+		// }
 		if (existingVendor.get().getPassword().equals(password)) {
-			String key = RandomString.make(6);
-			CurrentVendorSession currentVendorSession = new CurrentVendorSession(existingVendor.get().getVendorId(),key, LocalDateTime.now());
-			sessionRepository.save(currentVendorSession);
-			return currentVendorSession.toString();
-			
+			return existingVendor.get();
+			// CurrentVendorSession currentVendorSession = new
+			// CurrentVendorSession(existingVendor.get().getVendorId(),
+			// key, LocalDateTime.now());
+			// sessionRepository.save(currentVendorSession);
+			// return currentVendorSession.toString();
 		} else {
-			throw new LoginException("Please Enter valid password");
+			throw new Exception("Please Enter valid Password");
 		}
-		
+
 	}
 
 	@Override
-	public String LogOutFromAccount(String key) throws LoginException {
+	public String LogOutFromAccount(String key) throws Exception {
 		CurrentVendorSession validVendorSession = sessionRepository.findByUuid(key);
 		if (validVendorSession == null) {
-			throw new LoginException("User not Logged in with this UserName");
+			throw new Exception("User not Logged in with this UserName");
 		}
 		sessionRepository.delete(validVendorSession);
 		return "Logged Out";

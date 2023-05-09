@@ -181,10 +181,10 @@ public class AdminServiceImpl implements AdminService {
 
 		Vendor v1 = v.orElseThrow(() -> new VendorException("No Vendor available with Vendor ID : " + vendorId));
 
-//		if(!v1.getIsActive()) {
-//			throw new VendorException("Vendor Already Deactivated");
-//		}
-		
+		// if(!v1.getIsActive()) {
+		// throw new VendorException("Vendor Already Deactivated");
+		// }
+
 		v1.setIsActive(false);
 
 		return vendorRepository.save(v1);
@@ -200,10 +200,10 @@ public class AdminServiceImpl implements AdminService {
 
 		Vendor v1 = v.orElseThrow(() -> new NotFoundException("No Vendor available with Vendor ID : " + vendorId));
 
-//		if(!v1.getIsEligible()) {
-//			throw new VendorException("Vendor Already Banned from Bidding");
-//		}
-		
+		// if(!v1.getIsEligible()) {
+		// throw new VendorException("Vendor Already Banned from Bidding");
+		// }
+
 		v1.setIsEligible(false);
 
 		return vendorRepository.save(v1);
@@ -221,6 +221,12 @@ public class AdminServiceImpl implements AdminService {
 
 		Tender t = tenderRepository.findById(ad.getTenderId())
 				.orElseThrow(() -> new TenderException("No tender available with tender id : " + ad.getTenderId()));
+		if (t != null) {
+			if (t.getStatus().toString().equalsIgnoreCase("BOOKED")) {
+				throw new TenderException(
+						"Tender Already Assign To Other Vendor to " + t.getAssignedVendor().getUsername());
+			}
+		}
 
 		Vendor v = vendorRepository.findById(ad.getVendorId())
 				.orElseThrow(() -> new TenderException("No vendor available with vendor id : " + ad.getVendorId()));
@@ -232,6 +238,15 @@ public class AdminServiceImpl implements AdminService {
 		if (!v.getIsEligible()) {
 			throw new VendorException("Vendor is not eligible for bidding");
 		}
+		// boolean flag = false;
+		// for (int i = 0; i < v.getBidList().size(); i++) {
+		// 	if (v.getBidList().get(i).getTender().getTenderId().equals(ad.getTenderId())) {
+		// 		flag = true;
+		// 	}
+		// }
+		// if (!flag) {
+		// 	throw new TenderException("You need to place a Bid first for this Tender. whos Tender Id is " + ad.getTenderId());
+		// }
 
 		t.setAssignedVendor(v);
 		t.setStatus(TenderStatus.BOOKED);
