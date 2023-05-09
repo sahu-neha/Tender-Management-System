@@ -21,16 +21,15 @@ The application also includes user and admin validation and authentication.
 2. Vendor
 
 > ## Administrator Functions
-1. View all the vendors.
+1. View all vendors.
 2. Create new tenders.
 3. View All the Tenders.
 4. Update Existing Tender's Details.
 5. Delete A Tender.
-6. View All the Tenders according to its status (Available/Booked).
-7. View All the Bids of a tender.
-8. Assign tender to a vendor.
-9. Deactivate a vendor.
-10. Bar particular vendors from participating in the tender bid.
+6. View All the Bids of a tender.
+7. Assign tender to a vendor.
+8. Deactivate a vendor.
+9. Bar particular vendors from participating in the tender bid.
 
 > ## Vendor Functions
 1. Login with their account.
