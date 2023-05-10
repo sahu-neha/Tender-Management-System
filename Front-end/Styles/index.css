@@ -257,3 +257,90 @@ main {
 }
 
 /* -------------------firstSection-END------------------ */
+
+#footer {
+    background-color: #007bff;
+    color: white;
+    padding: 25px;
+}
+
+#footer>div {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    font-size: 18px;
+}
+
+#footer hr {
+    color: white;
+    opacity: 0.4;
+    margin-top: 5px;
+}
+
+/* -------------------footer-END------------------ */
+
+
+@media screen and (max-width: 1024px) {
+
+    main {
+        margin-bottom: 50px;
+    }
+
+    .firstSection {
+        height: auto;
+        text-align: center;
+    }
+
+    .firstSection>div {
+        flex-direction: column;
+    }
+
+    .firstSection h1 {
+        font-size: 44px;
+        width: auto;
+    }
+
+    .firstSection p {
+        font-size: 20px;
+        width: auto;
+    }
+
+    .none>img {
+        width: 100%;
+        margin-top: 50px;
+    }
+
+    .align {
+        justify-content: center;
+    }
+
+    /* =========== */
+
+
+    .nav-bottom>div {
+        padding: 12px;
+    }
+
+    .nav-bottom h2 {
+        font-size: 14px;
+    }
+
+    #logoMain {
+        text-decoration: none;
+        border-radius: 0px;
+        padding: 0px;
+    }
+
+    .nav-left {
+        width: 50%;
+    }
+
+    .nav-right {
+        width: 50%;
+    }
+
+    #start,
+    #login {
+        padding: 10px 20px;
+    }
+}
