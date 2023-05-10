@@ -118,6 +118,12 @@ Go to **com.masai package > TenderManagementSystemApplication.java**
 Run as Spring Boot App
 ```
 
+Go to **Front-end > Html > index.html** on VS Code
+
+```bash
+Open with Live Server
+```
+
 Open the following URL for Swagger-UI 
 ```bash
 http://localhost:8080/swagger-ui/
