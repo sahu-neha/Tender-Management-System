@@ -1,48 +1,36 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Homepage</title>
-		<link rel="stylesheet" href="/Front-end/VendorMethods/css/homepage.css" />
-	</head>
-	<body>
-		<h1>Welcome To Vendor Portal</h1>
-		<br />
-		<button onclick="location.href='availableTenders.html'">
-			Available Tenders
-		</button>
-		<button onclick="location.href='viewTenderDetailsByTenderId.html'">
-			View Tender Details by Tender ID
-		</button>
-		<button onclick="location.href='updateVendorPassword.html'">
-			Update Vendor Password
-		</button>
-		<button onclick="location.href='placeBid.html'">Place Bid</button>
-		<button onclick="location.href='bidHistoryByVendorId.html'">
-			Bid History by Vendor ID
-		</button>
-		<button onclick="location.href='/Front-end/Html/vLogin.html'">
-			Logout
-		</button>
-		<script>
-			// Code to change background image when hovering over button
-			const buttons = document.querySelectorAll("button");
-			buttons.forEach((button) => {
-				button.addEventListener("mouseover", () => {
-					document.body.style.backgroundImage = `url(${button.getAttribute(
-						"data-image"
-					)})`;
-					document.body.style.backgroundSize = "cover";
-					document.body.style.backgroundPosition = "center";
-					document.body.style.backgroundRepeat = "no-repeat";
-				});
-
-				button.addEventListener("mouseout", () => {
-					document.body.style.backgroundImage = 'url("background-image.jpg")';
-					document.body.style.backgroundSize = "cover";
-					document.body.style.backgroundPosition = "center";
-					document.body.style.backgroundRepeat = "no-repeat";
-				});
+<head>
+	<title>Homepage</title>
+	<link rel="stylesheet" href="/Front-end/VendorMethods/css/homepage.css">
+</head>
+<body>
+	<h1>Welcome To Vendor Portal</h1>
+	<br>
+	<button onclick="location.href='availableTenders.html'">Available Tenders</button>
+	<button onclick="location.href='viewTenderDetailsByTenderId.html'">View Tender Details by Tender ID</button>
+	<button onclick="location.href='updateVendorPassword.html'">Update Vendor Password</button>
+	<button onclick="location.href='placeBid.html'">Place Bid</button>
+	<button onclick="location.href='bidHistoryByVendorId.html'">Bid History by Vendor ID</button>
+    <button onclick="location.href='/Front-end/Html/vLogin.html'">Logout</button>
+	<script>
+		// Code to change background image when hovering over button
+		const buttons = document.querySelectorAll('button');
+		buttons.forEach(button => {
+			button.addEventListener('mouseover', () => {
+				document.body.style.backgroundImage = `url(${button.getAttribute('data-image')})`;
+				document.body.style.backgroundSize = 'cover';
+				document.body.style.backgroundPosition = 'center';
+				document.body.style.backgroundRepeat = 'no-repeat';
 			});
-		</script>
-	</body>
+
+			button.addEventListener('mouseout', () => {
+				document.body.style.backgroundImage = 'url("background-image.jpg")';
+				document.body.style.backgroundSize = 'cover';
+				document.body.style.backgroundPosition = 'center';
+				document.body.style.backgroundRepeat = 'no-repeat';
+			});
+		});
+	</script>
+</body>
 </html>
