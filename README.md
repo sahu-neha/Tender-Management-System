@@ -132,6 +132,57 @@ http://localhost:8080
 
 ![ER-Digram](https://github.com/sahu-neha/clever-flesh-3840/assets/110700928/4dcf3e86-5224-4681-b2f3-d1934157f827)
 
+<hr>
+
+> ## Landing Page
+
+![Landing Page](https://github.com/sahu-neha/clever-flesh-3840/assets/109987397/ee63d660-a36f-411f-be64-5133974cfd08)
+
+> ## Login Page
+
+<!-- ![Login Page](https://github.com/sahu-neha/clever-flesh-3840/assets/109987397/a69d816b-e58e-425d-9f73-91401e6fec43) -->
+
+![image](https://github.com/sahu-neha/clever-flesh-3840/assets/109987397/7358d884-5462-44e1-a578-23a2e7fdd937)
+
+> ## Admin can create a new Tender
+
+![Create Tender](https://github.com/sahu-neha/clever-flesh-3840/assets/109987397/4b7914e7-666a-4967-a209-353f638342f6)
+
+> ## Admin can view list of all Tenders
+
+![image](https://github.com/sahu-neha/clever-flesh-3840/assets/109987397/f1a7a820-89f9-40a9-8e36-2c8f9c1ceb5a)
+
+> ## Admin can view list of all Vendors
+
+![image](https://github.com/sahu-neha/clever-flesh-3840/assets/109987397/1ab18c89-c998-4eb9-a74f-130076425cc6)
+
+> ## Admin can view list of all the bids for a particular tender
+
+![image](https://github.com/sahu-neha/clever-flesh-3840/assets/109987397/4dad90fb-2e86-4785-a938-fc3ce5cb586a)
+
+<!--  -->
+
+> ## Create new account for Vendor
+
+![Vendor Created](https://github.com/sahu-neha/clever-flesh-3840/assets/109987397/9c80cd13-f78a-4118-bfc4-4052c5b858ff)
+
+> ## Visit Vendor Portal
+
+![Vendor Portal](https://github.com/sahu-neha/clever-flesh-3840/assets/109987397/96c90ea8-587a-41d5-8a3f-3d9cc6557f18)
+
+> ## Vendor can view all the Tenders available for bidding
+
+![image](https://github.com/sahu-neha/clever-flesh-3840/assets/109987397/03c2953d-a827-4fa9-868c-ff4c8504c478)
+
+> ## Vendor can place a bid against any Tender
+
+![image](https://github.com/sahu-neha/clever-flesh-3840/assets/109987397/df37f42f-acfd-4bcd-971f-e25616fff228)
+
+> ## Vendor can view their bidding history
+
+![image](https://github.com/sahu-neha/clever-flesh-3840/assets/109987397/16ea5eed-3636-4193-8e86-d50bcc6e5523)
+
+<hr>
 
 > ## Contributors
 
@@ -144,7 +195,7 @@ http://localhost:8080
 
 > => Implemented the service methods of Admin.
 
-> => Implemented the UI/Front-end for Admin Panel.
+> => Implemented the UI/Front-end for Admin Panel, Landing Page.
 
 #### Hoshiyar Singh Jyani
 
@@ -154,7 +205,7 @@ http://localhost:8080
 
 > => Implemented the service methods of Vendor.
 
-> => Implemented the UI/Front-end for Vendors.
+> => Implemented the UI/Front-end for Vendor Portal.
 
 #### Paras Jamwal
 
