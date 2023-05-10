@@ -8,15 +8,24 @@
 }
 
 #home {
-    position: fixed;
+    /* position: fixed;
     top: 50px;
     left: 50px;
-    color: black;
+    color: black; */
+    background-color: #007bff;
+    padding: 10px;
+    text-align: right;
+}
+
+#home a {
+    color: #fff;
+    text-decoration: none;
+    padding-right: 20px;
 }
 
 #main-container {
     margin: auto;
-    margin-top: 9%;
+    margin-top: 6%;
     width: 60%;
     box-shadow: #007bff 0px 0px 0px 2px,
         #5ca6f6 0px 4px 6px -1px,

@@ -6,9 +6,43 @@ body {
     margin: 0;
 }
 
+#home {
+    /* position: fixed;
+    top: 50px;
+    left: 50px;
+    color: black; */
+    background-color: #007bff;
+    padding: 10px;
+    text-align: right;
+}
+
+#home a {
+    color: #fff;
+    text-decoration: none;
+    padding-right: 20px;
+}
+
+#main-container {
+    margin: auto;
+    margin-top: 6%;
+    width: 60%;
+    box-shadow: #007bff 0px 0px 0px 2px,
+        #5ca6f6 0px 4px 6px -1px,
+        #bfdaf6 0px 1px 0px inset;
+    padding: 40px 20px;
+    border-radius: 7px;
+    margin-bottom: 100px;
+}
+
 h1 {
     text-align: center;
     margin-top: 40px;
+}
+
+hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: .5px solid #ddd;
 }
 
 table {
@@ -32,19 +66,19 @@ td {
     text-align: left;
 }
 
-th{
+th {
     background-color: #007bff;
     color: #fff;
 }
 
 /* Set up styles for the button */
 button {
-    margin-left: 30px;
+    margin-left: 50px;
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 5px;
-    padding: 10px;
+    padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
 }
@@ -81,9 +115,9 @@ tbody tr {
     animation: slideIn 0.5s ease-in-out;
 }
 
-#home {
+/* #home {
     position: fixed;
     top: 50px;
     left: 50px;
     color: black;
-}
+} */

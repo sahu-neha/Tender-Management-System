@@ -4,37 +4,53 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="/Front-end/VendorMethods/css/createNewVendor.css">
+		<link
+			rel="stylesheet"
+			href="/Front-end/VendorMethods/css/createNewVendor.css"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+		/>
 		<title>Create Vendor</title>
-		
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	</head>
 	<body>
 		<div id="home">
-			<a href="/Front-end/Html/admin.html">
-				<span class="material-symbols-outlined"> Admin Side </span></a
+			<a href="/Front-end/Html/index.html">
+				<span class="material-symbols-outlined"> home </span></a
 			>
 		</div>
 
 		<div id="main-container">
-			<div id="title"><h1>Create Vendor</h1></div>
+			<div id="title"><h1>Sign Up</h1></div>
 
 			<div id="admin-form">
-				
 				<form id="loginform">
-					
-					<input type="text" placeholder="Enter Your Username" id="Username">
-					<br>
-					<input type="password" placeholder="Enter Your Password" id="Password">
-					<br>
-					<button id="Login" type="submit">Go To Website</button>
-
-				 </form>
+					<input type="text" placeholder="Enter Your Username" id="Username" />
+					<br />
+					<input
+						type="password"
+						placeholder="Enter Your Password"
+						id="Password"
+					/>
+					<br />
+					<button id="Login" type="submit" style="margin-top: 10px">
+						Go To Website
+					</button>
+				</form>
 			</div>
-	<div>
-		<!-- I want to show return vendor object here -->
-		<div id="vendor-data"></div>
-	</div>
-
+			<div>
+				<!-- I want to show return vendor object here -->
+				<div id="vendor-data"></div>
 			</div>
 		</div>
 	</body>
