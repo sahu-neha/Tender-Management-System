@@ -4,7 +4,8 @@
 
 > ## Domain Description
 
-The Tender Management System is a web-based application designed for companies to manage tenders, empanelled vendors, and bids. The system has two types of users: administrators and vendors. Administrators can create new tenders, view all the vendors and tenders, and assign tenders to vendors. Vendors can view current tenders, place bids, view their bid history, and search for tenders by tender id or date range.
+The Tender Management System is a web-based application designed for companies to manage tenders, empanelled vendors, and bids. The system has two types of users: administrators and vendors. 
+<!-- Administrators can create new tenders, view all the vendors and tenders, and assign tenders to vendors. Vendors can view current tenders, place bids, view their bid history, and search for tenders by tender id or date range. -->
 
 <!--
 > ## Domain Description
@@ -14,7 +15,7 @@ Whenever a company requires a service/merchandise, a tender is floated. The comp
 > ## REST A.P.I.
 The API is designed to provide a wide range of functionalities for managing tenders, vendors, and bids along with different functionalities of admin and its information.
 It offers features for browsing for tenders, including the ability to place a bid for any tender against each other, to the vendors. It also supports CRUD operations for managing the data.
-The application also includes user and admin validation and authentication.
+<!-- The application also includes user and admin validation and authentication. -->
 
 > ## Users in the System
 1. Administrator
