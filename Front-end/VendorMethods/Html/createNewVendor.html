@@ -31,7 +31,7 @@
 		</div>
 
 		<div id="main-container">
-			<div id="title"><h1>Sign Up</h1></div>
+			<div id="title"><h1>Create vendor account</h1></div>
 
 			<div id="admin-form">
 				<form id="loginform">
@@ -44,7 +44,13 @@
 					/>
 					<br />
 					<button id="Login" type="submit" style="margin-top: 10px">
-						Go To Website
+						Sign up
+					</button>
+					<h4 style="text-align: center; font-family: Archivo">
+						Already an existing user?
+					</h4>
+					<button type="button" style="margin-top: 20px" onclick="login()">
+						Go to login page
 					</button>
 				</form>
 			</div>
@@ -55,5 +61,9 @@
 		</div>
 	</body>
 </html>
-
+<script>
+	function login() {
+		window.location.href = "/Front-end/Html/vLogin.html";
+	}
+</script>
 <script src="/Front-end/VendorMethods/Script/createNewVendor.js"></script>
