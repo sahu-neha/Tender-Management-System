@@ -168,7 +168,7 @@ http://localhost:8080
 
 <!--  -->
 
-> ## Create new account for Vendor
+> ## Vendor can create a new account by signing up
 
 ![Vendor Created](https://github.com/sahu-neha/clever-flesh-3840/assets/109987397/9c80cd13-f78a-4118-bfc4-4052c5b858ff)
 
@@ -221,4 +221,5 @@ http://localhost:8080
 
 > => Implemented the service methods of User Log In, Bid.
 
-
+<!-- > ## Conclusion
+The Tender Management System is an essential tool for companies that want to manage tenders efficiently. With this system, companies can easily manage tenders, empaneled vendors, and bids, making the tendering process more transparent and effective. -->
