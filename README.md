@@ -130,7 +130,7 @@ http://localhost:8080
 
 > ## ER Diagram
 
-//
+![ER-Digram](https://github.com/sahu-neha/clever-flesh-3840/assets/110700928/4dcf3e86-5224-4681-b2f3-d1934157f827)
 
 
 > ## Contributors
@@ -164,5 +164,4 @@ http://localhost:8080
 
 > => Implemented the service methods of User Log In, Bid.
 
-> => Implemented the UI/Front-end for User Login.
 
