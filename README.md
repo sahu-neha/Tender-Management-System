@@ -171,7 +171,10 @@ http://localhost:8080
 
 > ## Vendor can create a new account by signing up
 
-![Vendor Created](https://github.com/sahu-neha/clever-flesh-3840/assets/109987397/9c80cd13-f78a-4118-bfc4-4052c5b858ff)
+<!-- ![Vendor Created](https://github.com/sahu-neha/clever-flesh-3840/assets/109987397/9c80cd13-f78a-4118-bfc4-4052c5b858ff) -->
+
+![Vendor Created](https://github.com/sahu-neha/clever-flesh-3840/assets/109987397/5649463b-f603-4ea1-af22-5b9b75dedc7b)
+
 
 > ## Visit Vendor Portal
 
